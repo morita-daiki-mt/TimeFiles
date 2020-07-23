@@ -1,0 +1,9 @@
+<%# ログイン/ログアウト時でメニュー切り替え %>
+<% if user_signed_in? %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <%= link_to "タスク一覧", '#' %>
+  <%= link_to 'カレンダー', '#' %> 
+<% else %>
+  <%= link_to "ログイン", new_user_session_path %>
+  <%= link_to "新規登録", new_user_registration_path %>
+<% end %>
