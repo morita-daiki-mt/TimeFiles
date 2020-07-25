@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -14,8 +15,8 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:success] = 'タスクが追加されました'
-      redirect_to root_path
+      flash[:success] = 'タスクを追加しました'
+      redirect_to tasks_path
     else
       flash[:danger] = 'タスク追加に失敗しました'
       render :new
@@ -30,8 +31,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      flash[:success] = 'タスクが編集されました'
-      redirect_to root_path
+      flash[:success] = 'タスクを編集しました'
+      redirect_to tasks_path
     else
       flash.now[:danger] = 'タスク編集に失敗しました'
       render :show
@@ -39,6 +40,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+  
+    flash[:success] = 'タスクを削除しました'
+    redirect_to tasks_path
   end
 
   private

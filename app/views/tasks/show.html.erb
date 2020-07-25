@@ -1,8 +1,4 @@
-<%= form_for(@task) do |f| %>
-  <%= f.label :content, 'タスク' %>
-  <%= f.text_field :content %>
+<p><%= @task.content %></p>
+<p><%= @task.memo %></p>
 
-  <%= f.submit '更新' %>
-<% end %>
-
-<%= link_to 一覧へ戻る,root_path %>
+<%= link_to '一覧へ戻る', root_path %>
