@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
-  belomgs_to :user
+  belongs_to :user
   has_many :histories
 end
