@@ -43,7 +43,7 @@ before_action :authenticate_user!
 
   def destroy
     @task = Task.find(params[:id])
-    @task.destroy
+    @task.destroy if task.user_id == current_user.id
   
     flash[:success] = 'タスクを削除しました'
     redirect_to tasks_path
