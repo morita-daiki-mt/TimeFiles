@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
+before_action :authenticate_user!
+
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def new
@@ -12,7 +14,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(user_id: current_user.id, content: task_params[:content], memo: task_params[:memo])
 
     if @task.save
       flash[:success] = 'タスクを追加しました'
@@ -41,7 +43,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
-    @task.destroy
+    @task.destroy if task.user_id == current_user.id
   
     flash[:success] = 'タスクを削除しました'
     redirect_to tasks_path
@@ -50,6 +52,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:content, :icon, :memo)
+    params.require(:task).permit(:content, :icon, :memo, :user_id)
   end
 end
