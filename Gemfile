@@ -36,6 +36,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 gem 'bootstrap', '~> 4.5.0'
+gem "bootstrap4-datetime-picker-rails"
+gem 'momentjs-rails'
+gem "font-awesome-rails"
 gem 'jquery-rails'
 
 group :development, :test do
