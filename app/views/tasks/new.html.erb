@@ -1,6 +1,12 @@
-<%= form_for(@task) do |f| %>
-  <%= f.label :content, 'タスク' %>
+<%= form_with(model: @task, local: true) do |f| %>
+  <label class = "control-label" for="">タスク名</label>
   <%= f.text_field :content %>
+
+  <%= f.fields_for :histories do |history| %>
+    <label class = "control-label" for="">最終実行日</label>
+    <%= history.date_select :action_at, class: 'form-control' %>
+  <% end %>
+
   <%= f.submit '作成' %>
 <% end %>
 

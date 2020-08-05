@@ -16,14 +16,14 @@ AllCops:
     - 'client/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
-    - !ruby/regexp /old_and_unused\.rb$/
+    - ruby/regexp /old_and_unused\.rb$/
 
 #日本語手のコメントを許可する
 AsciiComments: 
   Enabled: false
 
 #クラスにコメントを記載しなくても良い
-Documentation:　
+Documentation: 
   Enabled: false
 
 #モジュール名::クラス名の定義を許可する
@@ -31,5 +31,5 @@ ClassAndModuleChildren:
   Enabled: false
 
 # 文字リテラルのイミュータブル宣言を無視
-Style/FrozenStringLiteralComment:　
+Style/FrozenStringLiteralComment: 
   Enabled: false

@@ -1,4 +1,9 @@
 <p><%= @task.content %></p>
 <p><%= @task.memo %></p>
+<ul>
+  <% @task.histories.each do |history| %>
+    <li><%= history.action_at %></li>
+  <% end %>
+</ul>
 
 <%= link_to '一覧へ戻る', root_path %>
