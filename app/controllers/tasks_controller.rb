@@ -17,14 +17,19 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(task_params)
-    if @task.save!
+    @task.save
+    if @task.histories.each do |history|
+        history.user_id = current_user.id
+        history.task_id = @task.id
+        history.save
+      end
       flash[:success] = 'タスクを追加しました'
       redirect_to tasks_path
     else
       flash[:danger] = 'タスク追加に失敗しました'
       render :new
     end
-    binding.pry
+    # binding.pry
   end
 
   def edit
