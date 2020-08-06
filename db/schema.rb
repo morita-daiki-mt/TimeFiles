@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_055500) do
   create_table "histories", force: :cascade do |t|
     t.integer "user_id"
     t.integer "task_id"
-    t.datetime "action_at"
+    t.date "action_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
