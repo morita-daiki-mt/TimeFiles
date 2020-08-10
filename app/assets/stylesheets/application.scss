@@ -2,6 +2,62 @@
 @import "font-awesome";
 @import "tempusdominus-bootstrap-4.css";
 
+// 画面設定
+@each $breakpoint in map-keys($grid-breakpoints) {
+  .mw-#{$breakpoint} {
+    max-width: var(--breakpoint-#{$breakpoint});
+  }
+}
+
 body{ 
   padding-top: 60px; 
 }
+
+// @media screen and (min-width: 0px) {
+//   @import "smart_phones";
+// }
+
+@media screen and (min-width: 992px) {
+  .allWrapper {
+    margin: 0 auto;
+  }
+
+  .navbar {
+    font-size: 0.8rem;
+    margin: 0 auto;
+    max-width: var(--breakpoint-xl);
+
+    .navbar-collapse {
+      justify-content: flex-end;
+    }
+
+    .nav-item {
+      margin-right: 16px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .allWrapper {
+    width: 1200px;
+  }
+
+  // .texts-content {
+  //   height: 360px;
+
+  //   img {
+  //     height: 187px;
+  //   }
+  // }
+}
+
+// flashの色を変更
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
