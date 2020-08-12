@@ -13,12 +13,24 @@ body{
   padding-top: 60px; 
 }
 
+// #container {
+//   display: flex;
+// }
+
+.task_index {
+  flex: 1;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: #fff;
+}
+
 // @media screen and (min-width: 0px) {
 //   @import "smart_phones";
 // }
 
 @media screen and (min-width: 992px) {
-  .allWrapper {
+  #container {
     margin: 0 auto;
   }
 
@@ -39,7 +51,7 @@ body{
 
 @media screen and (min-width: 1200px) {
 
-  .allWrapper {
+  #container {
     width: 1200px;
   }
 
@@ -52,7 +64,11 @@ body{
   // }
 }
 
-// flashの色を変更
+// flash
+.alert {
+  
+}
+
 .alert-notice {
   @extend .alert-info;
 }
@@ -61,3 +77,10 @@ body{
   @extend .alert-danger;
 }
 
+.card-body{
+  display: flex;
+}
+
+.task_menu {
+  margin-left: auto;
+}
