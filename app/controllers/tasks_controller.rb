@@ -7,7 +7,8 @@ class TasksController < ApplicationController
 
   def show
     @task = current_user.tasks.find(params[:id])
-    @histories = @task.histories
+    @history = History.new
+    # @histories = @task.histories
   end
 
   def new

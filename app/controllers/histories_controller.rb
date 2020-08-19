@@ -11,11 +11,17 @@ class HistoriesController < ApplicationController
 #     @history = History.new
 #   end
 
-#   def create
-#     @history = current_user.histories.build(task_id: params[:task_id], history_params[:action_at] )
-#     @history.save
-#     redirect_to tasks_path
-#   end
+  def create
+    task = Task.find_by(params[:id])
+    @history = task.histories.build(history_params)
+    task.histories.each do |history|
+      history.user_id = current_user.id
+      history.task_id = task.id
+      history.save
+    end
+    #binding.pry
+    redirect_to task_path(task.id)
+  end
 
 #   def edit
 #     @history = History.find(params[:id])
@@ -39,7 +45,7 @@ class HistoriesController < ApplicationController
 
 #   private
 
-#   def history_params
-#     params.require(:history).permit(:action_at)
-#   end
+  def history_params
+    params.require(:history).permit(:id, :user_id, :task_id, :action_at)
+  end
 end

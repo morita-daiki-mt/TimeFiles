@@ -1,8 +1,21 @@
 <p><%= @task.content %></p>
 <p><%= @task.memo %></p>
+
+<%= form_with(model:[@task, @history]) do |history| %>
+  <div class="input-group date" data-target-input="nearest">
+      <label class = "control-label" for="">実行日追加</label>
+      <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'} %>
+      <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
+          <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
+      </span>
+  </div>
+  <%= history.submit '作成' %>
+<% end %>
+
 <ul>
   <% @task.histories.each do |history| %>
     <li><%= history.action_at %></li>
   <% end %>
 </ul>
+<button type="button" class="btn btn-dark btn-sm"><%= link_to '削除', @task, method: :delete, data: { confirm: 'タスクを削除しますか?' } %></button>
 <%= link_to '一覧へ戻る', root_path %>
