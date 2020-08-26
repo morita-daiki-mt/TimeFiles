@@ -7,7 +7,9 @@ class TasksController < ApplicationController
 
   def show
     @task = current_user.tasks.find(params[:id])
-    @histories = @task.histories
+    @histories = @task.histories.order(action_at: :desc)
+    @history = History.new
+    # @hisotry.task_id = @task.id
   end
 
   def new
@@ -16,20 +18,20 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user.tasks.build(task_params)
-    @task.save
-    if @task.histories.each do |history|
-        history.user_id = current_user.id
-        history.task_id = @task.id
-        history.save
+      @task = current_user.tasks.build(task_params)
+      @task.save
+      if @task.histories.each do |history|
+          history.user_id = current_user.id
+          history.task_id = @task.id
+          history.save
+        end
+        flash[:success] = 'タスクを追加しました'
+        redirect_to tasks_path
+      else
+        flash[:danger] = 'タスク追加に失敗しました'
+        render :new
       end
-      flash[:success] = 'タスクを追加しました'
-      redirect_to tasks_path
-    else
-      flash[:danger] = 'タスク追加に失敗しました'
-      render :new
-    end
-    # binding.pry
+      # binding.pry
   end
 
   def edit
@@ -51,7 +53,6 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy if @task.user_id == current_user.id
-
     flash[:success] = 'タスクを削除しました'
     redirect_to tasks_path
   end

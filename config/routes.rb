@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :tasks do
-    resource :histories
+    resources :histories
   end
 end

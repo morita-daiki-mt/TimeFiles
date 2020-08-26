@@ -1,4 +1,6 @@
 class HistoriesController < ApplicationController
+  before_action :authenticate_user!
+
 #   def index
 #     @histories = current_task.histories.all
 #   end
@@ -11,11 +13,11 @@ class HistoriesController < ApplicationController
 #     @history = History.new
 #   end
 
-#   def create
-#     @history = current_user.histories.build(task_id: params[:task_id], history_params[:action_at] )
-#     @history.save
-#     redirect_to tasks_path
-#   end
+  def create
+    @history = current_user.histories.build(history_params)
+    @history.save
+    redirect_to task_path(id: @history.task_id)
+  end
 
 #   def edit
 #     @history = History.find(params[:id])
@@ -31,15 +33,16 @@ class HistoriesController < ApplicationController
 #     end
 #   end
 
-#   def destroy
-#     @history = History.find(params[:id])
-#     @history.destroy
-#     redirect_to tasks_path
-#   end
+  def destroy
+    @history = History.find(params[:id])
+    @history.destroy if @history.user_id == current_user.id
+    flash[:success] = '記録を削除しました'
+    redirect_to task_path(@history.task_id)
+  end
 
-#   private
+  private
 
-#   def history_params
-#     params.require(:history).permit(:action_at)
-#   end
+  def history_params
+    params.require(:history).permit(:id, :user_id, :task_id, :action_at)
+  end
 end
