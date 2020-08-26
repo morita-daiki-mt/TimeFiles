@@ -14,7 +14,7 @@
 <% end %>
 
 <ul>
-  <% @task.histories.each do |history| %>
+  <% @histories.each do |history| %>
     <li><%= history.action_at %></li>
     <button type="button" class="btn btn-dark btn-sm"><%= link_to '削除', task_history_path(history.id) , method: :delete, data: { confirm: '記録を削除しますか?' } %></button>
   <% end %>
