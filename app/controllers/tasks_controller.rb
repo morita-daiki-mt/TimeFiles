@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
     if @task.update(task_params)
       flash[:success] = 'タスクを編集しました'
-      redirect_to tasks_path
+      redirect_to task_path(id: @task.id)
     else
       flash.now[:danger] = 'タスク編集に失敗しました'
       render :show
