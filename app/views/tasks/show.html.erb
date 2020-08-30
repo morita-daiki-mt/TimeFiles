@@ -1,5 +1,6 @@
-<p><%= @task.content %></p>
+<h3><%= @task.content %></h3>
 <p><%= @task.memo %></p>
+<h4><%= (Date.today - @histories.first.action_at).to_i %>日経過</h4>
 
 <%= form_with(model:[@task, @history]) do |history| %>
   <%= history.hidden_field :task_id, :value => @task.id %>

@@ -9,7 +9,6 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find(params[:id])
     @histories = @task.histories.order(action_at: :desc)
     @history = History.new
-    # @hisotry.task_id = @task.id
   end
 
   def new
