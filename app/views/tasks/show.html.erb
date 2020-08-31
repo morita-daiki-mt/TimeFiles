@@ -1,5 +1,5 @@
 <%= form_for(@task) do |f| %>
-  <h5><%= f.text_field :content %></h5>
+  <h4><%= f.text_field :content %></h4>
   <%= f.submit '更新' %>
 <% end %>
 <p><%= @task.memo %></p>
