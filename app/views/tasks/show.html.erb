@@ -1,7 +1,4 @@
-<%= form_for(@task) do |f| %>
-  <h4><%= f.text_field :content %></h4>
-  <%= f.submit '更新' %>
-<% end %>
+<h3><%= @task.content %></h3>
 <p><%= @task.memo %></p>
 <h4><%= (Date.today - @histories.first.action_at).to_i %>日経過</h4>
 
