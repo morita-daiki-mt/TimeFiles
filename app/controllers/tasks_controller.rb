@@ -3,6 +3,8 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.all
+    @task = Task.new
+    @task.histories.build
   end
 
   def show
