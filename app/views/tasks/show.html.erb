@@ -1,13 +1,13 @@
 <%= form_for(@task) do |f| %>
   <h4><%= f.text_field :content %></h4>
-  <%= f.submit '更新' %>
-<% end %>
-<p><%= @task.memo %></p>
   <% if @histories.present? %>
     <h5><%= (Date.today - @histories.first.action_at).to_i %>日経過</h5> 
   <% else %>
     <h5>まだタスクを行っていません</h5>
   <% end %>
+  <%= f.text_area :memo %>
+  <%= f.submit '更新' %>
+<% end %>
 
 <%= form_with(model:[@task, @history]) do |history| %>
   <%= history.hidden_field :task_id, :value => @task.id %>
@@ -28,4 +28,4 @@
   <% end %>
 </ul>
 <button type="button" class="btn btn-dark btn-sm"><%= link_to '削除', @task, method: :delete, data: { confirm: 'タスクを削除しますか?' } %></button>
-<%= link_to '一覧へ戻る', root_path %>
+<button type="button" class="btn btn-info btn-sm"><%= link_to '一覧へ戻る', root_path %></button>
