@@ -28,3 +28,6 @@
 
 .DS_Store
 /vendor/bundle
+
+# icon画像がgitぶ入らないように
+/public/uploads/
