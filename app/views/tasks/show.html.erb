@@ -1,15 +1,13 @@
-<% if @task.icon? %>
-  <p><%= image_tag @task.icon.url %></p>
-<% end %>
+<p><%= image_tag @task.icon.url %></p>
 
 <%= form_for(@task) do |f| %>
   <h4><%= f.text_field :content %></h4>
-  <p><%= f.file_field :icon %></p>
+  <p><%= f.file_field :icon, accept: "image/png,image/jpeg,image/gif" %></p>
   <%= f.text_area :memo %>
   <%= f.submit '更新' %>
 <% end %>
 
-<% if @histories.present? %>
+<% if @history.present? %>
   <h5><%= (Date.today - @histories.first.action_at).to_i %>日経過</h5> 
 <% else %>
   <h5>まだタスクを行っていません</h5>
