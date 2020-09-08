@@ -7,7 +7,7 @@
   <%= f.submit '更新' %>
 <% end %>
 
-<% if @history.present? %>
+<% if @histories.present? %>
   <h5><%= (Date.today - @histories.first.action_at).to_i %>日経過</h5> 
 <% else %>
   <h5>まだタスクを行っていません</h5>
@@ -17,7 +17,7 @@
   <%= history.hidden_field :task_id, :value => @task.id %>
   <div class="input-group date" data-target-input="nearest">
       <label class = "control-label" for="">実行日追加</label>
-      <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'} %>
+      <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true %>
       <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
           <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
       </span>

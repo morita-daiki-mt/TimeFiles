@@ -15,8 +15,13 @@ class HistoriesController < ApplicationController
 
   def create
     @history = current_user.histories.build(history_params)
-    @history.save
-    redirect_to task_path(id: @history.task_id)
+    if @history.save
+      flash[:success] = '実行日を追加しました'
+      redirect_to task_path(id: @history.task_id)
+    else
+      flash[:danger] = '実行日追加に失敗しました'
+      # render task_path(id: @history.task_id)
+    end
   end
 
 #   def edit

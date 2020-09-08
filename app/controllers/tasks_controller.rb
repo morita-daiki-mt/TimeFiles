@@ -30,7 +30,7 @@ class TasksController < ApplicationController
         redirect_to tasks_path
       else
         flash[:danger] = 'タスク追加に失敗しました'
-        render :new
+        render :index
       end
       # binding.pry
   end
