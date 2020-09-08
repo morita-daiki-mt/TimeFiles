@@ -13,11 +13,6 @@ class TasksController < ApplicationController
     @history = History.new
   end
 
-  # def new
-  #   @task = Task.new
-  #   @task.histories.build
-  # end
-
   def create
       @task = current_user.tasks.build(task_params)
       @task.save
@@ -34,10 +29,6 @@ class TasksController < ApplicationController
       end
       # binding.pry
   end
-
-  # def edit
-  #   @task = Task.find(params[:id])
-  # end
 
   def update
     @task = Task.find(params[:id])
