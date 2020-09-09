@@ -13,11 +13,6 @@ class TasksController < ApplicationController
     @history = History.new
   end
 
-  # def new
-  #   @task = Task.new
-  #   @task.histories.build
-  # end
-
   def create
       @task = current_user.tasks.build(task_params)
       @task.save
@@ -30,14 +25,9 @@ class TasksController < ApplicationController
         redirect_to tasks_path
       else
         flash[:danger] = 'タスク追加に失敗しました'
-        render :new
+        render :index
       end
-      # binding.pry
   end
-
-  # def edit
-  #   @task = Task.find(params[:id])
-  # end
 
   def update
     @task = Task.find(params[:id])

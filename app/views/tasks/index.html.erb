@@ -1,7 +1,6 @@
 <%= form_with(model: @task, local: true) do |f| %>
   <label class = "control-label" for="">タスク名</label>
   <%= f.text_field :content %>
-
   <div class="input-group date" data-target-input="nearest">
     <%= f.fields_for :histories do |history| %>
       <label class = "control-label" for="">最終実行日</label>
@@ -11,11 +10,9 @@
       </span>
     <% end %>
   </div>
-
   <%= f.submit '作成' %>
 <% end %>
-<%#= link_to 'タスク作成', new_task_path, class: "text-info" %>
-
+<%#======================================%>
 <div class="task_index">
   <% @tasks.each do |task| %>
     <div class="card">

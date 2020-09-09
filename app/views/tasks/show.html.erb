@@ -1,30 +1,30 @@
 <p><%= image_tag @task.icon.url %></p>
-
+<%#======================================%>
 <%= form_for(@task) do |f| %>
   <h4><%= f.text_field :content %></h4>
   <p><%= f.file_field :icon, accept: "image/png,image/jpeg,image/gif" %></p>
   <%= f.text_area :memo %>
   <%= f.submit '更新' %>
 <% end %>
-
-<% if @history.present? %>
+<%#======================================%>
+<% if @histories.present? %>
   <h5><%= (Date.today - @histories.first.action_at).to_i %>日経過</h5> 
 <% else %>
   <h5>まだタスクを行っていません</h5>
 <% end %>
-
+<%#======================================%>
 <%= form_with(model:[@task, @history]) do |history| %>
   <%= history.hidden_field :task_id, :value => @task.id %>
   <div class="input-group date" data-target-input="nearest">
       <label class = "control-label" for="">実行日追加</label>
-      <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'} %>
+      <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true %>
       <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
           <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
       </span>
   </div>
   <%= history.submit '作成' %>
 <% end %>
-
+<%#======================================%>
 <ul>
   <% @histories.each do |history| %>
     <li><%= history.action_at %></li>
