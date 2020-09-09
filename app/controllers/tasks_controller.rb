@@ -27,7 +27,6 @@ class TasksController < ApplicationController
         flash[:danger] = 'タスク追加に失敗しました'
         render :index
       end
-      # binding.pry
   end
 
   def update
