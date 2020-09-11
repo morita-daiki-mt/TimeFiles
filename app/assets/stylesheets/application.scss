@@ -13,6 +13,13 @@ body{
   padding-top: 60px; 
 }
 
+.container-login {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 2rem;
+}
+
+
 // #container {
 //   display: flex;
 // }
