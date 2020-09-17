@@ -19,14 +19,6 @@ body{
   padding: 2rem;
 }
 
-.custom-file {
-  overflow: hidden;
-}
-.custom-file-label {
-  white-space: nowrap;
-}
-
-
 // #container {
 //   display: flex;
 // }
@@ -97,4 +89,29 @@ a:link, a:visited, a:hover, a:active {
 
 .task_menu {
   margin-left: auto;
+}
+
+.show_taskinfo {
+  display: flex;
+
+}
+
+.show_icon {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// ファイル選択欄
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
+}
+
+.custom-file-input {
+
 }
