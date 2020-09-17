@@ -19,6 +19,13 @@ body{
   padding: 2rem;
 }
 
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
+}
+
 
 // #container {
 //   display: flex;
