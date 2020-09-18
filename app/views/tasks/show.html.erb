@@ -1,23 +1,26 @@
 <%= form_for(@task) do |f| %>
-  <div class="show_taskinfo">
-    <div class="show_icon">
+  <div class="show-taskinfo">
+    <div class="show-icon">
       <p><%= image_tag @task.icon.url %></p>
       <div class="custom-file">
         <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
         <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
       </div>
     </div>
-    <h3><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h3>
-    <% if @histories.present? %>
-      <h5><%= (Date.today - @histories.first.action_at).to_i %>日経過</h5> 
-    <% else %>
-      <h5>まだタスクを行っていません</h5>
-    <% end %>
+    <div class="taskname-date">
+      <h3><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h3>
+      <div class="elapsed-date">
+        <% if @histories.present? %>
+          <h4><%= (Date.today - @histories.first.action_at).to_i %>日経過</h4> 
+        <% else %>
+          <h4>まだタスクを行っていません</h4>
+        <% end %>
+      </div>
+    </div>
+    <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
+    <%= f.submit '更新', class: 'btn btn-outline-info'%>
   </div>
-  <%= f.text_area :memo %>
-  <%= f.submit '更新' %>
 <% end %>
-
 <%#======================================%>
 <%= form_with(model:[@task, @history]) do |history| %>
   <%= history.hidden_field :task_id, :value => @task.id %>

@@ -91,17 +91,29 @@ a:link, a:visited, a:hover, a:active {
   margin-left: auto;
 }
 
-.show_taskinfo {
+.show-taskinfo {
   display: flex;
-
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.show_icon {
+.elapsed-date {
+  margin-top: 2rem;
+}
+
+.show-icon {
   width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.taskname-date {
+  flex-flow: column;
+  margin: 1rem;
+  margin-left: 5rem;
 }
 
 // ファイル選択欄
@@ -114,4 +126,13 @@ a:link, a:visited, a:hover, a:active {
 
 .custom-file-input {
 
+}
+
+textarea {
+  resize: none;
+}
+
+textarea.form-control{
+  height: 108px;
+  margin: 2rem 0rem 1rem 0rem;
 }
