@@ -116,6 +116,15 @@ a:link, a:visited, a:hover, a:active {
   margin-left: 5rem;
 }
 
+.addhistories {
+  display: flex;
+  margin: 0 2rem 1.5rem 2rem
+}
+
+.addhistorybtn {
+  margin-left: 0.5rem;
+}
+
 // ファイル選択欄
 .custom-file {
   overflow: hidden;

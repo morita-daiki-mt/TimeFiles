@@ -11,9 +11,9 @@
       <h3><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h3>
       <div class="elapsed-date">
         <% if @histories.present? %>
-          <h4><%= (Date.today - @histories.first.action_at).to_i %>日経過</h4> 
+          <h4><%= (Date.today - @histories.first.action_at).to_i %> DAYS AGO</h4> 
         <% else %>
-          <h4>まだタスクを行っていません</h4>
+          <h4>NO DATE</h4>
         <% end %>
       </div>
     </div>
@@ -24,14 +24,15 @@
 <%#======================================%>
 <%= form_with(model:[@task, @history]) do |history| %>
   <%= history.hidden_field :task_id, :value => @task.id %>
-  <div class="input-group date" data-target-input="nearest">
-      <label class = "control-label" for="">実行日追加</label>
-      <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true %>
-      <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
+  <div class="addhistories">
+    <div class="input-group date" data-target-input="nearest">
+        <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true, placeholder: '実行日追加' %>
+        <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
           <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
-      </span>
+        </span>
+    </div>
+    <%= history.submit '追加', class: 'btn btn-outline-info addhistorybtn' %>
   </div>
-  <%= history.submit '作成' %>
 <% end %>
 <%#======================================%>
 <ul>
@@ -40,5 +41,5 @@
     <button type="button" class="btn btn-dark btn-sm"><%= link_to '削除', task_history_path(@task, history), method: :delete, data: { confirm: '記録を削除しますか?' } %></button>
   <% end %>
 </ul>
-<button type="button" class="btn btn-dark btn-sm"><%= link_to '削除', @task, method: :delete, data: { confirm: 'タスクを削除しますか?' } %></button>
+<button type="button" class="btn btn-dark btn-sm"><%= link_to 'タスク削除', @task, method: :delete, data: { confirm: 'タスクを削除しますか?' } %></button>
 <button type="button" class="btn btn-info btn-sm"><%= link_to '一覧へ戻る', root_path %></button>
