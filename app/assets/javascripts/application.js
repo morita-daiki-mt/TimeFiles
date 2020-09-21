@@ -26,3 +26,4 @@ $(document).on('turbolinks:load', function() {
       format: 'YYYY-MM-DD'
   });
 });
+
