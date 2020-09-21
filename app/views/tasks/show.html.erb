@@ -8,13 +8,15 @@
       </div>
     </div>
     <div class="taskname-date">
-      <h3><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h3>
+      <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h4>
       <div class="elapsed-date">
-        <% if @histories.present? %>
-          <h4><%= (Date.today - @histories.first.action_at).to_i %> DAYS AGO</h4> 
-        <% else %>
-          <h4>NO DATE</h4>
-        <% end %>
+        <h4><i class="fa fa-calendar-minus-o fa-fw"></i>
+          <% if @histories.present? %>
+            <%= (Date.today - @histories.first.action_at).to_i %> DAYS AGO
+          <% else %>
+            NO DATE
+          <% end %>
+        </h4>
       </div>
     </div>
     <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
