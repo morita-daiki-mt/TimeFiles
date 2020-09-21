@@ -18,7 +18,10 @@
       </div>
     </div>
     <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
-    <%= f.submit '更新', class: 'btn btn-outline-info'%>
+    <div class="showbtninfo">
+      <%= f.submit '更新', class: 'btn btn-outline-info'%>
+      <button type="button" class="btn btn-outline-danger"><%= link_to 'タスク削除', @task, class: 'text-danger', method: :delete, data: { confirm: 'タスクを削除しますか?' } %></button>
+    </div>
   </div>
 <% end %>
 <%#======================================%>
@@ -35,11 +38,18 @@
   </div>
 <% end %>
 <%#======================================%>
-<ul>
+<ul class="histories-preview">
   <% @histories.each do |history| %>
-    <li><%= history.action_at %></li>
-    <button type="button" class="btn btn-dark btn-sm"><%= link_to '削除', task_history_path(@task, history), method: :delete, data: { confirm: '記録を削除しますか?' } %></button>
+    <li class="list-group-item">
+      <%= history.action_at.strftime("%Y年 %m月 %d日") %>
+        <%= link_to task_history_path(@task, history), method: :delete, data: { confirm: '記録を削除しますか?' } do %>
+          <i class="fa fa-lg fa-calendar-times-o" style="color:rosybrown;"></i>
+        <% end %>
+    </li>
   <% end %>
 </ul>
-<button type="button" class="btn btn-dark btn-sm"><%= link_to 'タスク削除', @task, method: :delete, data: { confirm: 'タスクを削除しますか?' } %></button>
-<button type="button" class="btn btn-info btn-sm"><%= link_to '一覧へ戻る', root_path %></button>
+
+<div class="undermenu">
+  
+  <button type="button" class="btn btn-info btn-sm"><%= link_to '一覧へ戻る', root_path %></button>
+</div>
