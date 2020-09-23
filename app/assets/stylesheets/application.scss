@@ -9,8 +9,13 @@
   }
 }
 
-body{ 
+body { 
   padding: 60px 0; 
+}
+
+.index-namedate {
+  width: 80%;
+  margin: 0;
 }
 
 .container-login {
@@ -46,6 +51,10 @@ nav ul li a {
 
 .alert-alert {
   @extend .alert-danger;
+}
+
+.card {
+  margin: 1rem 0;
 }
 
 .card-body{

@@ -1,33 +1,41 @@
-<%= form_with(model: @task, local: true) do |f| %>
-  <label class = "control-label" for="">タスク名</label>
-  <%= f.text_field :content %>
-  <div class="input-group date" data-target-input="nearest">
-    <%= f.fields_for :histories do |history| %>
-      <label class = "control-label" for="">最終実行日</label>
-      <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'} %>
-      <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
-          <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
-      </span>
-    <% end %>
-  </div>
-  <%= f.submit '作成' %>
-<% end %>
+<div class="createtask">
+  <%= form_with(model: @task, local: true) do |f| %>
+    <label class = "control-label" for="">タスク名</label>
+    <%= f.text_field :content %>
+    <div class="input-group date" data-target-input="nearest">
+      <%= f.fields_for :histories do |history| %>
+        <label class = "control-label" for="">最終実行日</label>
+        <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'} %>
+        <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
+            <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
+        </span>
+      <% end %>
+    </div>
+    <%= f.submit '作成' %>
+  <% end %>
+</div>
 <%#======================================%>
 <div class="task_index">
   <% @tasks.each do |task| %>
     <div class="card">
       <div class="card-body">
         <p><%= image_tag task.icon.thumb.url %></p>
-        <h4><%= task.content %></h4>
-        <% @history = task.histories.order(action_at: :desc).first %>
-          <% if @history.present? %>
-            <h5><%= (Date.today - @history.action_at).to_i %>日経過</h5> 
-          <% else %>
-            <h5>まだタスクを行っていません</h5>
-          <% end %>
+        <div class="row index-namedate">
+          <h4 class="col-md-6 text-dark"><%= task.content %></h4>
+          <% @history = task.histories.order(action_at: :desc).first %>
+          <div class="col-md-6">
+            <% if @history.present? %>
+              <h5><%= (Date.today - @history.action_at).to_i %> DAYS AGO</h5> 
+            <% else %>
+              <h5>NO DATE</h5>
+            <% end %>
+          </div>
+        </div>
         <div class="task_menu">
           <button type="button" class="btn btn-info btn-sm"><%= link_to '詳細', task %></button>
-          <button type="button" class="btn btn-dark btn-sm"><%= link_to '削除', task, method: :delete, data: { confirm: 'タスクを削除しますか?' } %></button>
+          <%= link_to task, method: :delete, data: { confirm: 'タスクを削除しますか?' } do %>
+            <i class="fa fa-lg fa-remove fa-fw" style="color:firebrick"></i>
+          <% end %>
         </div>
       </div>
     </div>
