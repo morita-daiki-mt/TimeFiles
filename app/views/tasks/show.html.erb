@@ -45,7 +45,7 @@
     <li class="list-group-item">
       <%= history.action_at.strftime("%Y年 %m月 %d日") %>
         <%= link_to task_history_path(@task, history), method: :delete, data: { confirm: '記録を削除しますか?' } do %>
-          <i class="fa fa-lg fa-calendar-times-o" style="color:rosybrown;"></i>
+          <i class="fa fa-lg fa-calendar-times-o" style="color:firebrick;"></i>
         <% end %>
     </li>
   <% end %>

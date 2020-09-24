@@ -9,8 +9,13 @@
   }
 }
 
-body{ 
+body { 
   padding: 60px 0; 
+}
+
+.index-namedate {
+  width: 80%;
+  margin: 0;
 }
 
 .container-login {
@@ -48,9 +53,23 @@ nav ul li a {
   @extend .alert-danger;
 }
 
+.card {
+  margin: 1rem 0;
+}
+
 .card-body{
   display: flex;
 }
+
+.historyinput {
+  display: flex;
+}
+
+.hidebtn {
+  margin:1rem 0rem 1.5rem 0rem;
+}
+
+// show page
 
 .task_menu {
   margin-left: auto;
@@ -149,9 +168,12 @@ textarea.form-control{
 }
 
 @media screen and (min-width: 1200px) {
-
   #container {
     width: 1200px;
+  }
+
+  .col-form-label {
+    margin-left: 2rem;
   }
 }
 
