@@ -36,13 +36,13 @@
       <div class="card-body">
         <p><%= image_tag task.icon.thumb.url %></p>
         <div class="row index-namedate">
-          <h4 class="col-md-6 text-dark"><%= task.content %></h4>
+          <h4 class="col-md-5"><%= link_to task.content, task, class: 'text-secondary' %></h4>
           <% @history = task.histories.order(action_at: :desc).first %>
           <div class="col-md-6">
             <% if @history.present? %>
-              <h5><%= (Date.today - @history.action_at).to_i %> DAYS AGO</h5> 
+              <h5 class="text-secondary"><%= (Date.today - @history.action_at).to_i %> DAYS AGO</h5> 
             <% else %>
-              <h5>NO DATE</h5>
+              <h5 class="text-warning">NO DATE</h5>
             <% end %>
           </div>
         </div>
