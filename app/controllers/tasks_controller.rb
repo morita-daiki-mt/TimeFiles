@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     @tasks = current_user.tasks.all
     @task = Task.new
     @task.histories.build
+    @history = History.new
   end
 
   def show
@@ -34,10 +35,10 @@ class TasksController < ApplicationController
 
     if @task.update(task_params)
       flash[:success] = 'タスクを編集しました'
-      redirect_to task_path(id: @task.id)
+      redirect_back(fallback_location: root_path)
     else
       flash.now[:danger] = 'タスク編集に失敗しました'
-      render :show
+      render task_path(id: @task.id)
     end
   end
 
