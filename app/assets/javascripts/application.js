@@ -17,6 +17,7 @@
 //= require moment/ja.js
 //= require tempusdominus-bootstrap-4.js
 //= require rails-ujs
+//= require data-confirm-modal
 //= require activestorage
 //= require turbolinks
 //= require_tree .
