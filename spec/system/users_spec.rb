@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :system do
+RSpec.describe 'User', type: :system do
   let!(:login_user) do
     create(:user,
             email: 'test@example.com',
