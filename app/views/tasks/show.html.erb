@@ -52,7 +52,7 @@
         <%= link_to task_history_path(@task, history), method: :delete, data: 
           { confirm: '記録を削除しますか?',
             cancel: 'やめる',
-            commit: '削除する'}, title: '削除確認' do %>
+            commit: '削除する'}, title: '削除確認', class: 'historydeletebtn' do %>
           <i class="fa fa-lg fa-calendar-times-o" style="color:firebrick;"></i>
         <% end %>
     </li>

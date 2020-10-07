@@ -57,6 +57,44 @@ RSpec.describe 'Histories', type: :system do
   end
 
   describe 'showページ' do
-    
+    before do
+      login_user user
+      visit task_path(task)
+    end
+    it 'タスク名を変更できる' do
+      fill_in 'task_content', with: 'TimeFilesテスト'
+      click_button '更新'
+      visit tasks_path
+      expect(page).to have_content'TimeFilesテスト'
+    end
+    it 'メモを追加できる' do
+      fill_in 'task_memo', with: 'タスクメモ'
+      click_button '更新'
+      expect(page).to have_content'タスクメモ'
+    end
+    it 'タスク削除ボタンでTaskが消える' do
+      expect do
+        click_button 'タスク削除'
+        click_button '削除する'
+      end.to change(Task, :count).by(-1)
+    end
+    it 'タスク削除ボタンでTaskと一緒にHistoryも消える' do
+      expect do
+        click_button 'タスク削除'
+        click_button '削除する'
+      end.to change(History, :count).by(-1)
+    end
+    it '実行日を追加できる' do
+      fill_in '実行日追加', with: '2020-10-07'
+      click_button '追加'
+      expect(page).to have_content '2020年 10月 07日'
+    end
+    it '実行日を削除する' do
+      expect do
+        find('.historydeletebtn').click
+        click_button '削除する'
+      end.to change(History, :count).by(-1)
+      expect(page).to have_content 'NO DATE'
+    end
   end
 end
