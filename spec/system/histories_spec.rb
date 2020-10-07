@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Histories', type: :system do
-  let(:user) { create(:user) }
-  let(:task) { create(:task) }
   let(:history) { create(:history) }
+  let(:task) { history.task }
+  let(:user) { task.user}
 
   describe 'indexページ' do
     context 'タスク追加関連' do
@@ -36,14 +36,22 @@ RSpec.describe 'Histories', type: :system do
       before do
         login_user user
         visit tasks_path
-        click_button 'ADD NEW TASK'
-        fill_in 'task_content', with: 'test'
-        fill_in 'action_at', with: Faker::Date.backward
-        click_button '作成'
       end
       it 'TODAYボタンが機能している' do
         click_button 'TODAY'
         expect(page).to have_content '0 DAYS AGO'
+      end
+      it '削除ボタンでTaskが消える' do
+        expect do
+          find('.deletebtn').click
+          click_button '削除する'
+        end.to change(Task, :count).by(-1)
+      end
+      it '削除ボタンでTaskと一緒にHistoryも消える' do
+        expect do
+          find('.deletebtn').click
+          click_button '削除する'
+        end.to change(History, :count).by(-1)
       end
     end
   end
