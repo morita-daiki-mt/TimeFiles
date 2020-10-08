@@ -15,19 +15,19 @@ class TasksController < ApplicationController
   end
 
   def create
-      @task = current_user.tasks.build(task_params)
-      @task.save
-      if @task.histories.each do |history|
-          history.user_id = current_user.id
-          history.task_id = @task.id
-          history.save
-        end
-        flash[:success] = 'タスクを追加しました'
-        redirect_to tasks_path
-      else
-        flash[:danger] = 'タスク追加に失敗しました'
-        render :index
-      end
+    @task = current_user.tasks.build(task_params)
+    @task.save
+    if @task.histories.each do |history|
+         history.user_id = current_user.id
+         history.task_id = @task.id
+         history.save
+       end
+      flash[:success] = 'タスクを追加しました'
+      redirect_to tasks_path
+    else
+      flash[:danger] = 'タスク追加に失敗しました'
+      render :index
+    end
   end
 
   def update
@@ -52,6 +52,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:id, :content, :icon, :memo, histories_attributes: [:id, :user_id, :task_id, :action_at])
+    params.require(:task).permit(:id, :content, :icon, :memo, histories_attributes:
+                                [:id, :user_id, :task_id, :action_at])
   end
 end

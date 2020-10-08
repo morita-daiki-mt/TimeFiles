@@ -16,8 +16,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
     # For Rails 3.1+ asset pipeline compatibility:
+    # rubocop:disable all
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  
+    # rubocop:enable all
     "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
 
@@ -59,6 +60,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def secure_token
     var = :"@#{mounted_as}_secure_token"
+    # rubocop:disable all
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+    # rubocop:enable all
   end
 end
