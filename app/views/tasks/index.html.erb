@@ -56,7 +56,7 @@
           <%= link_to task, method: :delete, data: 
             { confirm: 'タスクを削除しますか?',
               cancel: 'やめる',
-              commit: '削除する'}, title: '削除確認' do %>
+              commit: '削除する'}, title: '削除確認', class: 'deletebtn' do %>
             <i class="fa fa-lg fa-remove fa-fw" style="color:firebrick"></i>
           <% end %>
         </div>
