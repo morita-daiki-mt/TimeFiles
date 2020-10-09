@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'tasks#index'
+  root to: 'static_pages#home'
 
   devise_for :users
   resources :tasks do
