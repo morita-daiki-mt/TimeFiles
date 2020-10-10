@@ -1,65 +1,69 @@
-<%= form_for(@task) do |f| %>
-  <div class="show-taskinfo">
-    <div class="show-icon">
-      <p><%= image_tag @task.icon.url %></p>
-      <div class="custom-file">
-        <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
-        <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
+<div class="card">
+  <div class="card-body" style="display: block;">
+    <%= form_for(@task) do |f| %>
+      <div class="show-taskinfo">
+        <div class="show-icon">
+          <p><%= image_tag @task.icon.url %></p>
+          <div class="custom-file">
+            <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
+            <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
+          </div>
+        </div>
+        <div class="taskname-date">
+          <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h4>
+          <div class="elapsed-date">
+            <h4><i class="fa fa-calendar-minus-o fa-fw"></i>
+              <% if @histories.present? %>
+                <%= (Date.today - @histories.first.action_at).to_i %> DAYS AGO
+              <% else %>
+                NO DATE
+              <% end %>
+            </h4>
+          </div>
+        </div>
+        <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
+        <div class="showbtninfo">
+          <%= f.submit '更新', class: 'btn btn-outline-info'%>
+          <button type="button" class="btn btn-outline-danger">
+            <%= link_to 'タスク削除', @task, class: 'text-danger', method: :delete, data: 
+              { confirm: '記録を削除しますか?',
+                cancel: 'やめる',
+                commit: '削除する'}, title: '削除確認' %>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="taskname-date">
-      <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h4>
-      <div class="elapsed-date">
-        <h4><i class="fa fa-calendar-minus-o fa-fw"></i>
-          <% if @histories.present? %>
-            <%= (Date.today - @histories.first.action_at).to_i %> DAYS AGO
-          <% else %>
-            NO DATE
-          <% end %>
-        </h4>
+    <% end %>
+    <%#======================================%>
+    <%= form_with(model:[@task, @history]) do |history| %>
+      <%= history.hidden_field :task_id, :value => @task.id %>
+      <div class="addhistories">
+        <div class="input-group date" data-target-input="nearest">
+            <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true, placeholder: '実行日追加' %>
+            <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
+              <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
+            </span>
+        </div>
+        <%= history.submit '追加', class: 'btn btn-outline-info addhistorybtn' %>
       </div>
-    </div>
-    <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
-    <div class="showbtninfo">
-      <%= f.submit '更新', class: 'btn btn-outline-info'%>
-      <button type="button" class="btn btn-outline-danger">
-        <%= link_to 'タスク削除', @task, class: 'text-danger', method: :delete, data: 
-          { confirm: '記録を削除しますか?',
-            cancel: 'やめる',
-            commit: '削除する'}, title: '削除確認' %>
-      </button>
-    </div>
-  </div>
-<% end %>
-<%#======================================%>
-<%= form_with(model:[@task, @history]) do |history| %>
-  <%= history.hidden_field :task_id, :value => @task.id %>
-  <div class="addhistories">
-    <div class="input-group date" data-target-input="nearest">
-        <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true, placeholder: '実行日追加' %>
-        <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
-          <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
-        </span>
-    </div>
-    <%= history.submit '追加', class: 'btn btn-outline-info addhistorybtn' %>
-  </div>
-<% end %>
-<%#======================================%>
-<ul class="histories-preview">
-  <% @histories.each do |history| %>
-    <li class="list-group-item">
-      <%= history.action_at.strftime("%Y年 %m月 %d日") %>
-        <%= link_to task_history_path(@task, history), method: :delete, data: 
-          { confirm: '記録を削除しますか?',
-            cancel: 'やめる',
-            commit: '削除する'}, title: '削除確認', class: 'historydeletebtn' do %>
-          <i class="fa fa-lg fa-calendar-times-o" style="color:firebrick;"></i>
-        <% end %>
-    </li>
-  <% end %>
-</ul>
+    <% end %>
+    <%#======================================%>
+    <ul class="histories-preview">
+      <% @histories.each do |history| %>
+        <li class="list-group-item">
+          <%= history.action_at.strftime("%Y年 %m月 %d日") %>
+            <%= link_to task_history_path(@task, history), method: :delete, data: 
+              { confirm: '記録を削除しますか?',
+                cancel: 'やめる',
+                commit: '削除する'}, title: '削除確認', class: 'historydeletebtn' do %>
+              <i class="fa fa-lg fa-calendar-times-o" style="color:firebrick;"></i>
+            <% end %>
+        </li>
+      <% end %>
+    </ul>
 
-<div class="undermenu">
-  
-  <button type="button" class="btn btn-info btn-sm"><%= link_to '一覧へ戻る', tasks_path %></button>
+    <div class="undermenu">
+      
+      <button type="button" class="btn btn-info btn-sm"><%= link_to '一覧へ戻る', tasks_path %></button>
+    </div>
+  </div>
 </div>
