@@ -11,6 +11,7 @@
 
 body { 
   padding: 60px 0; 
+  background-color: #f1f1f1;
 }
 
 .index-namedate {
@@ -24,9 +25,9 @@ body {
   padding: 2rem;
 }
 
-// #container {
-//   display: flex;
-// }
+.btn-outline-info {
+  background-color: #fff;
+}
 
 .task_index {
   flex: 1;

@@ -1,2 +1,38 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="container">
+  <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel"　data-interval="100">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="/images/TimefilesHP_1.png" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="/images/TimefilesHP_2.png" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="/images/TimefilesHP_3.png" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="/images/TimefilesHP_4.png" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="/images/TimefilesHP_5.png" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="/images/TimefilesHP_6.png" alt="Second slide">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row userlink">
+    <div class="col-lg-12">
+      <h3 class="text-center mt-2"><strong>無料で会員登録</strong></h3>
+      <div class="mx-auto mt-4" style="width: 300px; display: flex;">
+        <p class="mx-auto"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-info btn-lg" %></p>
+        <p class="mx-auto"><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info btn-lg" %></p>
+      </div>
+      <div class="mx-auto mt-4" style="width: 300px;">
+        <p class="text-center"><%= link_to "ゲストログイン", '#', class: "btn btn-outline-success btn-block" %></p>
+      </div>
+    </div>
+  </div>
+</div>
