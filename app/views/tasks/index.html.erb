@@ -3,30 +3,34 @@
     ADD NEW TASK
   </button>
   <div class="collapse" id="collapseExample">
-    <%= form_with(model: @task, local: true) do |f| %>
-      <div class="form-group row">
-        <label class = "col-sm-2 col-form-label text-muted" for="">タスク名</label>
-        <div class="col-sm-9">
-          <%= f.text_field :content, class:'form-control' %>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="input-group date" data-target-input="nearest">
-          <%= f.fields_for :histories do |history| %>
-            <label class = "col-sm-2 col-form-label text-muted" for="">最終実行日</label>
-            <div class="col-sm-9 historyinput">
-              <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'} %>
-              <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
-                  <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
-              </span>
+    <div class="card" style="margin-top: -1rem;">
+      <div class="card-body" style="display: block;">
+        <%= form_with(model: @task, local: true) do |f| %>
+          <div class="form-group row">
+            <label class = "col-sm-2 col-form-label text-muted" for="">タスク名</label>
+            <div class="col-sm-9">
+              <%= f.text_field :content, class:'form-control' %>
             </div>
-          <% end %>
-        </div>
+          </div>
+          <div class="form-group row">
+            <div class="input-group date" data-target-input="nearest">
+              <%= f.fields_for :histories do |history| %>
+                <label class = "col-sm-2 col-form-label text-muted" for="">最終実行日</label>
+                <div class="col-sm-9 historyinput">
+                  <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'} %>
+                  <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
+                      <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="text-right">
+            <%= f.submit '作成', class: 'btn btn-outline-info' %>
+          </div>
+        <% end %>
       </div>
-      <div class="text-right">
-        <%= f.submit '作成', class: 'btn btn-outline-info' %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
 <%#======================================%>

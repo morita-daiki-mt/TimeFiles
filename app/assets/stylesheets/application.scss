@@ -11,6 +11,7 @@
 
 body { 
   padding: 60px 0; 
+  background-color: #f1f1f1;
 }
 
 .index-namedate {
@@ -24,10 +25,6 @@ body {
   padding: 2rem;
 }
 
-// #container {
-//   display: flex;
-// }
-
 .task_index {
   flex: 1;
 }
@@ -40,8 +37,13 @@ nav ul li a {
   color: #fff;
 }
 
+.btn-outline-info {
+  background-color: #fff;
+}
+
 .btn-outline-danger {
   margin-left: 0.5rem;
+  background-color: #fff;
 }
 
 // flash
