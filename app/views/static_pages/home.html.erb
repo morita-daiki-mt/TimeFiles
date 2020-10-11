@@ -31,7 +31,9 @@
         <p class="mx-auto"><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info btn-lg" %></p>
       </div>
       <div class="mx-auto mt-4" style="width: 300px;">
-        <p class="text-center"><%= link_to "ゲストログイン", '#', class: "btn btn-outline-success btn-block" %></p>
+        <p class="text-center">
+          <%= link_to "ゲストログイン", users_guest_sign_in_path , method: :post, class: "btn btn-outline-success btn-block" %>
+        </p>
       </div>
     </div>
   </div>
