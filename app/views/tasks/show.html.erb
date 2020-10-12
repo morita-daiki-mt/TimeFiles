@@ -1,24 +1,28 @@
 <div class="card">
-  <div class="card-body" style="display: block;">
+  <div class="card-body show-page" style="display: block;">
     <%= form_for(@task) do |f| %>
       <div class="show-taskinfo">
-        <div class="show-icon">
-          <p><%= image_tag @task.icon.url %></p>
-          <div class="custom-file">
-            <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
-            <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
-          </div>
-        </div>
-        <div class="taskname-date">
-          <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h4>
-          <div class="elapsed-date">
-            <h4><i class="fa fa-calendar-minus-o fa-fw"></i>
-              <% if @histories.present? %>
-                <%= (Date.today - @histories.first.action_at).to_i %> DAYS AGO
-              <% else %>
-                NO DATE
-              <% end %>
-            </h4>
+        <div class="container">
+          <div class="row">
+            <div class="show-icon col-lg-3">
+              <p><%= image_tag @task.icon.url %></p>
+              <div class="custom-file">
+                <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
+                <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
+              </div>
+            </div>
+            <div class="taskname-date col-lg-8 col-md-7">
+              <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h4>
+              <div class="elapsed-date">
+                <h4><i class="fa fa-calendar-minus-o fa-fw"></i>
+                  <% if @histories.present? %>
+                    <%= (Date.today - @histories.first.action_at).to_i %> DAYS AGO
+                  <% else %>
+                    NO DATE
+                  <% end %>
+                </h4>
+              </div>
+            </div>
           </div>
         </div>
         <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
