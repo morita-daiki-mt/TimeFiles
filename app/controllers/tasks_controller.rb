@@ -16,17 +16,17 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(task_params)
-    @task.save
-    if @task.histories.each do |history|
-         history.user_id = current_user.id
-         history.task_id = @task.id
-         history.save
-       end
+    if @task.save
+      @task.histories.each do |history|
+        history.user_id = current_user.id
+        history.task_id = @task.id
+        history.save
+      end
       flash[:success] = 'タスクを追加しました'
       redirect_to tasks_path
     else
       flash[:danger] = 'タスク追加に失敗しました'
-      render :index
+      redirect_to tasks_path
     end
   end
 
@@ -37,8 +37,8 @@ class TasksController < ApplicationController
       flash[:success] = 'タスクを編集しました'
       redirect_back(fallback_location: tasks_path)
     else
-      flash.now[:danger] = 'タスク編集に失敗しました'
-      render task_path(id: @task.id)
+      flash[:danger] = 'タスク編集に失敗しました'
+      redirect_back(fallback_location: tasks_path)
     end
   end
 
