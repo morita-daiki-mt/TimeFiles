@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "tempusdominus-bootstrap-4.css";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
 
 // 画面設定
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -10,8 +11,10 @@
 }
 
 body { 
+  font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   padding: 60px 0; 
   background-color: #f1f1f1;
+  color: #555555;
 }
 
 .index-namedate {
@@ -31,6 +34,15 @@ body {
 
 nav ul li a {
   color: #fff;
+  margin-right: 0.7rem;
+}
+
+nav i {
+  color: #fff;
+}
+
+.fixed-top {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .btn-info a, .btn-dark a {
@@ -43,6 +55,10 @@ nav ul li a {
 
 .btn-outline-danger {
   margin-left: 0.5rem;
+  background-color: #fff;
+}
+
+.btn-outline-success {
   background-color: #fff;
 }
 
@@ -72,7 +88,6 @@ nav ul li a {
 }
 
 // show page
-
 .task_menu {
   margin-left: auto;
 }
@@ -82,6 +97,16 @@ nav ul li a {
   flex-wrap: wrap;
   margin: 2rem;
   padding-bottom: 2rem;
+}
+
+.show-taskinfo i {
+  color: #4d5156;
+}
+
+.task-rename {
+  margin-left: 30px;
+  color: #808080;
+  font-size: 12px;
 }
 
 .elapsed-date {
@@ -98,8 +123,11 @@ nav ul li a {
 
 .taskname-date {
   flex-flow: column;
-  margin: 1rem;
   margin-left: 5rem;
+}
+
+#task_content {
+  width: 90%;
 }
 
 .showbtninfo {
@@ -185,7 +213,12 @@ textarea.form-control{
   }
 
   .taskname-date {
-    margin: 1rem;
+    margin: 1rem 0rem;
+    padding: 1rem 0;
     justify-content: center;
+  }
+
+  .show-page {
+    padding: 0;
   }
 }
