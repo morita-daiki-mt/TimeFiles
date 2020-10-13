@@ -13,6 +13,7 @@
             </div>
             <div class="taskname-date col-lg-8 col-md-7">
               <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', style: 'border: none' %></h4>
+              <p class="task-rename">タスクの名前を変更できます</p>
               <div class="elapsed-date">
                 <h4><i class="fa fa-calendar-minus-o fa-fw"></i>
                   <% if @histories.present? %>

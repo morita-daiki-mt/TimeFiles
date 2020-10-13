@@ -55,6 +55,10 @@ nav i {
   background-color: #fff;
 }
 
+.btn-outline-success {
+  background-color: #fff;
+}
+
 // flash
 .alert-notice {
   @extend .alert-info;
@@ -90,6 +94,16 @@ nav i {
   flex-wrap: wrap;
   margin: 2rem;
   padding-bottom: 2rem;
+}
+
+.show-taskinfo i {
+  color: #4d5156;
+}
+
+.task-rename {
+  margin-left: 30px;
+  color: #808080;
+  font-size: 12px;
 }
 
 .elapsed-date {
