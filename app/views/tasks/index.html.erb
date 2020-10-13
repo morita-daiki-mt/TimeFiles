@@ -41,10 +41,10 @@
       <div class="card-body">
         <p><%= image_tag task.icon.thumb.url %></p>
         <div class="row index-namedate">
-          <h4 class="col-md-5"><%= link_to task.content, task, class: 'text-secondary' %></h4>
+          <h4 class="col-md-5"><%= link_to task.content, task, style: "color: #555555;" %></h4>
           <div class="col-md-6">
             <% if @histories.present? %>
-              <h5 class="text-secondary"><%= (Date.today - @histories.action_at).to_i %> DAYS AGO</h5> 
+              <h5><%= (Date.today - @histories.action_at).to_i %> DAYS AGO</h5> 
             <% else %>
               <h5 class="text-warning">NO DATE</h5>
             <% end %>

@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "tempusdominus-bootstrap-4.css";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
 
 // 画面設定
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -10,8 +11,10 @@
 }
 
 body { 
+  font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   padding: 60px 0; 
   background-color: #f1f1f1;
+  color: #555555;
 }
 
 .index-namedate {
