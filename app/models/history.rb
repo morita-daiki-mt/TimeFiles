@@ -5,6 +5,8 @@ class History < ApplicationRecord
   validate :action_at_be_in_the_future
 
   def action_at_be_in_the_future
-    errors.add(:action_at, "未来の日付は登録できません。") if action_at.nil? || action_at > Date.today
+    if action_at.present? && action_at > Date.today
+      errors.add(:action_at, "未来の日付は登録できません。")
+    end
   end
 end

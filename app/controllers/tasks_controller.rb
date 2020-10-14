@@ -32,7 +32,6 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-
     if @task.update(task_params)
       flash[:success] = 'タスクを編集しました'
       redirect_back(fallback_location: tasks_path)
