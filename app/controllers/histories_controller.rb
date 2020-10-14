@@ -8,7 +8,8 @@ class HistoriesController < ApplicationController
       redirect_back(fallback_location: tasks_path)
     else
       flash[:danger] = '実行日追加に失敗しました'
-      # render task_path(id: @history.task_id)
+      @history = current_user.histories.build(history_params)
+      redirect_back(fallback_location: tasks_path)
     end
   end
 

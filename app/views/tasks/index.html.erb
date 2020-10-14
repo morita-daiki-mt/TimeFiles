@@ -39,7 +39,7 @@
     <% @histories = task.histories.order(action_at: :desc).first %>
     <div class="card">
       <div class="card-body">
-        <p><%= image_tag task.icon.thumb.url %></p>
+        <p style="width: 50px;"><%= image_tag task.icon.thumb.url %></p>
         <div class="row index-namedate">
           <h4 class="col-md-5"><%= link_to task.content, task, style: "color: #555555;" %></h4>
           <div class="col-md-6">

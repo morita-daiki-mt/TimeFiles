@@ -39,7 +39,7 @@
       </div>
     <% end %>
     <%#======================================%>
-    <%= form_with(model:[@task, @history]) do |history| %>
+    <%= form_with(model:[@task, @history], local: true) do |history| %>
       <%= history.hidden_field :task_id, :value => @task.id %>
       <div class="addhistories">
         <div class="input-group date" data-target-input="nearest">
