@@ -31,3 +31,5 @@
 
 # icon画像がgitぶ入らないように
 /public/uploads/
+
+/.env
