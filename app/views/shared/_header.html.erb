@@ -12,26 +12,26 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <i class="fa fa-list-alt fa-fw fa-lg mr-1"></i><%= link_to "タスク一覧", tasks_path %>
+            <i class="fa fa-list-alt fa-fw fa-lg mr-1"></i><%= link_to "ALL TASKS", tasks_path %>
           </li>
           <li class="nav-item">
-            <i class="fa fa-calendar fa-fw fa-lg mr-1"></i><%= link_to 'カレンダー', '#' %>
+            <i class="fa fa-calendar fa-fw fa-lg mr-1"></i><%= link_to 'CALENDAR', '#' %>
           </li>
             <li class="nav-item">
-            <i class="fa fa-user fa-fw fa-lg"></i> <%= link_to 'アカウント編集', edit_user_registration_path %>
+            <i class="fa fa-user fa-fw fa-lg"></i> <%= link_to 'ACCOUNT', edit_user_registration_path %>
           </li>
           <li class="nav-item">
-            <i class="fa fa-sign-out fa-fw fa-lg mr-1"></i><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <i class="fa fa-sign-out fa-fw fa-lg mr-1"></i><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %>
           </li>
         <% else %>
           <li class="nav-item">
-            <i class="fa fa-sign-in fa-fw fa-lg mr-1"></i><%= link_to "ログイン", new_user_session_path %>
+            <i class="fa fa-sign-in fa-fw fa-lg mr-1"></i><%= link_to "LOGIN", new_user_session_path %>
           </li>
           <li class="nav-item">
-            <i class="fa fa-user-plus fa-fw fa-lg mr-1"></i><%= link_to "新規登録", new_user_registration_path %>
+            <i class="fa fa-user-plus fa-fw fa-lg mr-1"></i><%= link_to "REGISTRATION", new_user_registration_path %>
           </li>
           <li>
-            <i class="fa fa-hand-o-right fa-fw fa-lg mr-1"></i><%= link_to "ゲストログイン", users_guest_sign_in_path , method: :post %>
+            <i class="fa fa-hand-o-right fa-fw fa-lg mr-1"></i><%= link_to "GUEST LOGIN", users_guest_sign_in_path , method: :post %>
           </li>
         <% end %>
       </ul>

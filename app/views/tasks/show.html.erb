@@ -8,7 +8,7 @@
               <p><%= image_tag @task.icon.url %></p>
               <div class="custom-file">
                 <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
-                <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
+                <label class="custom-file-label" for="customFile" data-browse="FILE">Add icon picture ...</label>
               </div>
             </div>
             <div class="taskname-date col-lg-8 col-md-7">
@@ -28,10 +28,10 @@
         </div>
         <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
         <div class="showbtninfo">
-          <%= f.submit '更新', class: 'btn btn-outline-info'%>
+          <%= f.submit 'UPDATE', class: 'btn btn-outline-info'%>
           <button type="button" class="btn btn-outline-danger">
-            <%= link_to 'タスク削除', @task, class: 'text-danger', method: :delete, data: 
-              { confirm: '記録を削除しますか?',
+            <%= link_to 'DELETE TASK', @task, class: 'text-danger', method: :delete, data: 
+              { confirm: 'タスクを削除しますか?',
                 cancel: 'やめる',
                 commit: '削除する'}, title: '削除確認' %>
           </button>
@@ -48,7 +48,7 @@
               <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
             </span>
         </div>
-        <%= history.submit '追加', class: 'btn btn-outline-info addhistorybtn' %>
+        <%= history.submit 'ADD', class: 'btn btn-outline-info addhistorybtn' %>
       </div>
     <% end %>
     <%#======================================%>
@@ -68,7 +68,7 @@
 
     <div class="undermenu">
       
-      <button type="button" class="btn btn-info btn-sm"><%= link_to '一覧へ戻る', tasks_path %></button>
+      <button type="button" class="btn btn-info btn-sm"><%= link_to 'BACK', tasks_path %></button>
     </div>
   </div>
 </div>
