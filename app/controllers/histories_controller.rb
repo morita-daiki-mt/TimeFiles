@@ -20,6 +20,11 @@ class HistoriesController < ApplicationController
     redirect_to task_path(@history.task_id)
   end
 
+  def calendar
+    @tasks = current_user.tasks.all
+    @histories = current_user.histories.all
+  end
+
   private
 
   def history_params
