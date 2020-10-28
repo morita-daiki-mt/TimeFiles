@@ -45,6 +45,8 @@ gem 'jquery-rails'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'data-confirm-modal'
+gem 'simple_calendar', '~> 2.0'
+
 
 group :production do
   gem 'unicorn', '5.4.1'
