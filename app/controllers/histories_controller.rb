@@ -22,8 +22,9 @@ class HistoriesController < ApplicationController
 
   def calendar
     @tasks = current_user.tasks.all
-    @histories = current_user.histories.all
+    @histories = current_user.histories.includes(:task)
   end
+
 
   private
 
