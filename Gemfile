@@ -46,11 +46,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'data-confirm-modal'
 gem 'simple_calendar', '~> 2.0'
-
-
-group :production do
-  gem 'unicorn', '5.4.1'
-end
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -77,6 +73,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
+end
+
+group :production, :staging do
+    gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
