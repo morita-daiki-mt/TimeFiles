@@ -9,4 +9,8 @@ class History < ApplicationRecord
       errors.add(:action_at, "未来の日付は登録できません。")
     end
   end
+
+  def start_time
+    self.action_at
+  end
 end

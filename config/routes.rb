@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :histories
   end
+  get "calendar" => "histories#calendar"
 end
