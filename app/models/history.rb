@@ -11,6 +11,6 @@ class History < ApplicationRecord
   end
 
   def start_time
-    self.action_at
+    action_at
   end
 end

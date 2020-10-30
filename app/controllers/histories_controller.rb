@@ -25,7 +25,6 @@ class HistoriesController < ApplicationController
     @histories = current_user.histories.includes(:task)
   end
 
-
   private
 
   def history_params
