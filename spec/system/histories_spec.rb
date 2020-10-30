@@ -15,20 +15,20 @@ RSpec.describe 'Histories', type: :system do
       it 'タスク追加に成功する' do
         fill_in 'task_content', with: 'test'
         fill_in 'action_at', with: Faker::Date.backward
-        click_button '作成'
+        click_button 'CREATE'
         expect(page).to have_content 'test'
       end
       it 'タスク追加に失敗する' do
         expect do
           fill_in 'task_content', with: 'test'
           fill_in 'action_at', with: ''
-          click_button '作成'
+          click_button 'CREATE'
         end.to change(History, :count).by 0
       end
       it '最終実行日が機能している' do
         fill_in 'task_content', with: 'test'
         fill_in 'action_at', with: Date.today - 1
-        click_button '作成'
+        click_button 'CREATE'
         expect(page).to have_content '1 DAYS AGO'
       end
     end
@@ -63,30 +63,30 @@ RSpec.describe 'Histories', type: :system do
     end
     it 'タスク名を変更できる' do
       fill_in 'task_content', with: 'TimeFilesテスト'
-      click_button '更新'
+      click_button 'UPDATE'
       visit tasks_path
       expect(page).to have_content'TimeFilesテスト'
     end
     it 'メモを追加できる' do
       fill_in 'task_memo', with: 'タスクメモ'
-      click_button '更新'
+      click_button 'UPDATE'
       expect(page).to have_content'タスクメモ'
     end
     it 'タスク削除ボタンでTaskが消える' do
       expect do
-        click_button 'タスク削除'
+        click_button 'DELETE TASK'
         click_button '削除する'
       end.to change(Task, :count).by(-1)
     end
     it 'タスク削除ボタンでTaskと一緒にHistoryも消える' do
       expect do
-        click_button 'タスク削除'
+        click_button 'DELETE TASK'
         click_button '削除する'
       end.to change(History, :count).by(-1)
     end
     it '実行日を追加できる' do
-      fill_in '実行日追加', with: '2020-10-07'
-      click_button '追加'
+      fill_in 'ADD DATE', with: '2020-10-07'
+      click_button 'ADD'
       expect(page).to have_content '2020年 10月 07日'
     end
     it '実行日を削除する' do
