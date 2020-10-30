@@ -8,7 +8,7 @@
               <p><%= image_tag @task.icon.url %></p>
               <div class="custom-file">
                 <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
-                <label class="custom-file-label" for="customFile" data-browse="FILE">Add icon picture ...</label>
+                <label class="custom-file-label" for="customFile" data-browse="FILE">add icon ...</label>
               </div>
             </div>
             <div class="taskname-date col-lg-8 col-md-7">
@@ -43,7 +43,7 @@
       <%= history.hidden_field :task_id, :value => @task.id %>
       <div class="addhistories">
         <div class="input-group date" data-target-input="nearest">
-            <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true, placeholder: '実行日追加' %>
+            <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true, placeholder: 'ADD DATE' %>
             <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
               <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
             </span>
