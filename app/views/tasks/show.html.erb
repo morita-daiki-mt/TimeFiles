@@ -28,7 +28,7 @@
         </div>
         <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
         <div class="showbtninfo">
-          <%= f.submit 'UPDATE', class: 'btn btn-outline-info'%>
+          <%= f.submit 'UPDATE', class: 'btn btn-outline-dark'%>
           <button type="button" class="btn btn-outline-danger">
             <%= link_to 'DELETE TASK', @task, class: 'text-danger', method: :delete, data: 
               { confirm: 'タスクを削除しますか?',
@@ -48,7 +48,7 @@
               <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
             </span>
         </div>
-        <%= history.submit 'ADD', class: 'btn btn-outline-info addhistorybtn' %>
+        <%= history.submit 'ADD', class: 'btn btn-outline-dark addhistorybtn' %>
       </div>
     <% end %>
     <%#======================================%>
@@ -68,7 +68,7 @@
 
     <div class="undermenu">
       
-      <button type="button" class="btn btn-info btn-sm"><%= link_to 'BACK', tasks_path %></button>
+      <button type="button" class="btn btn-dark btn-sm"><%= link_to 'PAGE BACK', tasks_path %></button>
     </div>
   </div>
 </div>

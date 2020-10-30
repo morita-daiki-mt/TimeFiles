@@ -1,5 +1,5 @@
 <div class="createtask">
-  <button type="button" class="btn btn-outline-info btn-block hidebtn" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <button type="button" class="btn btn-outline-dark btn-block hidebtn" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     ADD NEW TASK
   </button>
   <div class="collapse" id="collapseExample">
@@ -54,9 +54,9 @@
           <%= form_with(model:[task, @history]) do |f| %>
             <%= f.hidden_field :task_id, :value => task.id %>
             <%= f.hidden_field :action_at, :value => Date.today %>
-            <%= f.submit 'TODAY', class: 'btn btn-outline-info mb-1' %>
+            <%= f.submit 'TODAY', class: 'btn btn-outline-dark mb-1' %>
           <% end %>
-          <button type="button" class="btn btn-info btn-sm"><%= link_to 'show', task %></button>
+          <button type="button" class="btn btn-dark btn-sm"><%= link_to 'show', task %></button>
           <%= link_to task, method: :delete, data: 
             { confirm: 'タスクを削除しますか?',
               cancel: 'やめる',

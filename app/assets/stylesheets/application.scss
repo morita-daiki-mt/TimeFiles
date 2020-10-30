@@ -66,17 +66,14 @@ nav i {
   color: #fff;
 }
 
-.btn-outline-info {
+.btn-outline-info, .btn-outline-dark, .btn-outline-success{
   background-color: #fff;
 }
 
 .btn-outline-danger {
   margin-left: 0.5rem;
   background-color: #fff;
-}
-
-.btn-outline-success {
-  background-color: #fff;
+  color: firebrick;
 }
 
 // flash
