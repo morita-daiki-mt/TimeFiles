@@ -66,17 +66,14 @@ nav i {
   color: #fff;
 }
 
-.btn-outline-info {
+.btn-outline-info, .btn-outline-dark, .btn-outline-success{
   background-color: #fff;
 }
 
 .btn-outline-danger {
   margin-left: 0.5rem;
   background-color: #fff;
-}
-
-.btn-outline-success {
-  background-color: #fff;
+  color: firebrick;
 }
 
 // flash
@@ -94,6 +91,7 @@ nav i {
 
 .card-body{
   display: flex;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .historyinput {
