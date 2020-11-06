@@ -48,11 +48,6 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def calendar
-    @tasks = current_user.tasks.all
-    @histories = current_user.histories.all
-  end
-
   private
 
   def task_params
