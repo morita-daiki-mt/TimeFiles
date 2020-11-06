@@ -6,7 +6,7 @@ RSpec.describe "UserAuthentications", type: :request do
   let(:invalid_user_params) { attributes_for(:user, email: "") }
 
 
-  describe 'アカウント作成' do
+  describe 'アカウント作成(user_registration_path)' do
     context 'パラメータが妥当な場合' do
       it 'リクエストが成功すること' do
         post user_registration_path, params: { user: user_params }

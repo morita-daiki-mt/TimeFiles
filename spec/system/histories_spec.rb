@@ -97,4 +97,20 @@ RSpec.describe 'Histories', type: :system do
       expect(page).to have_content 'NO DATE'
     end
   end
+
+  describe 'カレンダーページ' do
+    before do
+      login_user user
+      visit tasks_path
+      click_button 'ADD NEW TASK'
+      fill_in 'task_content', with: 'Calendar_test'
+      fill_in 'action_at', with: Date.today
+      click_button 'CREATE'
+      visit calendar_path
+    end
+
+    it 'カレンダーが機能している' do
+      expect(page).to have_content 'Calendar_test'
+    end
+  end
 end
