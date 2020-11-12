@@ -27,8 +27,15 @@
   }
 }
 
+#container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body { 
   font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  min-height: 100vh;
   padding: 60px 0; 
   background-color: #f1f1f1;
   color: #555555;
@@ -74,6 +81,13 @@ nav i {
   margin-left: 0.5rem;
   background-color: #fff;
   color: firebrick;
+}
+
+footer {
+  text-align: center;
+  padding-top: 50px;
+  margin-top: auto;
+  height: 40px;
 }
 
 // flash
