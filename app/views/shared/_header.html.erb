@@ -1,40 +1,40 @@
-<section class="fixed-top bg-dark">
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <% if user_signed_in? %>
-      <%= link_to "TimeFiles", root_path, class: "navbar-brand" %>
-    <% else %>
-      <%= link_to "TimeFiles", tasks_path, class: "navbar-brand" %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <i class="fa fa-list-alt fa-fw fa-lg mr-1"></i><%= link_to "ALL TASKS", tasks_path %>
-          </li>
-          <li class="nav-item">
-            <i class="fa fa-calendar fa-fw fa-lg mr-1"></i><%= link_to 'CALENDAR', calendar_path %>
-          </li>
+  <section class="fixed-top bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <% if user_signed_in? %>
+        <%= link_to "TimeFiles", tasks_path, class: "navbar-brand" %>
+      <% else %>
+        <%= link_to "TimeFiles", root_path, class: "navbar-brand" %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
             <li class="nav-item">
-            <i class="fa fa-user fa-fw fa-lg"></i> <%= link_to 'ACCOUNT', edit_user_registration_path %>
-          </li>
-          <li class="nav-item">
-            <i class="fa fa-sign-out fa-fw fa-lg mr-1"></i><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <i class="fa fa-sign-in fa-fw fa-lg mr-1"></i><%= link_to "SIGN IN", new_user_session_path %>
-          </li>
-          <li class="nav-item">
-            <i class="fa fa-user-plus fa-fw fa-lg mr-1"></i><%= link_to "SIGN UP", new_user_registration_path %>
-          </li>
-          <li>
-            <i class="fa fa-hand-o-right fa-fw fa-lg mr-1"></i><%= link_to "GUEST LOGIN", users_guest_sign_in_path , method: :post %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-</section>
+              <i class="fa fa-list-alt fa-fw fa-lg mr-1"></i><%= link_to "ALL TASKS", tasks_path %>
+            </li>
+            <li class="nav-item">
+              <i class="fa fa-calendar fa-fw fa-lg mr-1"></i><%= link_to 'CALENDAR', calendar_path %>
+            </li>
+              <li class="nav-item">
+              <i class="fa fa-user fa-fw fa-lg"></i> <%= link_to 'ACCOUNT', edit_user_registration_path %>
+            </li>
+            <li class="nav-item">
+              <i class="fa fa-sign-out fa-fw fa-lg mr-1"></i><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <i class="fa fa-sign-in fa-fw fa-lg mr-1"></i><%= link_to "SIGN IN", new_user_session_path %>
+            </li>
+            <li class="nav-item">
+              <i class="fa fa-user-plus fa-fw fa-lg mr-1"></i><%= link_to "SIGN UP", new_user_registration_path %>
+            </li>
+            <li>
+              <i class="fa fa-hand-o-right fa-fw fa-lg mr-1"></i><%= link_to "GUEST LOGIN", users_guest_sign_in_path , method: :post %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </section>
