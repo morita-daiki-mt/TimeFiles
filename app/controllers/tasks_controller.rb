@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  require 'csv'
+
   before_action :authenticate_user!
 
   def index
@@ -6,6 +8,13 @@ class TasksController < ApplicationController
     @task = Task.new
     @task.histories.build
     @history = History.new
+
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        send_tasks_csv(@tasks)
+      end
+    end
   end
 
   def show
@@ -46,6 +55,21 @@ class TasksController < ApplicationController
     @task.destroy if @task.user_id == current_user.id
     flash[:success] = 'タスクを削除しました'
     redirect_to tasks_path
+  end
+
+  def send_tasks_csv(tasks)
+    csv_data = CSV.generate do |csv|
+      header = %w(content user_id task_id memo action_at)
+      csv << header
+
+      tasks.each do |task|
+        task.histories.each do |history|
+          values = [history.task.content, history.task.user_id, history.task_id, history.task.memo, history.action_at]
+          csv << values
+        end
+      end
+    end
+    send_data(csv_data, filename: "timefiles_tasks.csv")
   end
 
   private

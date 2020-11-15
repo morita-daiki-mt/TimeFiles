@@ -33,3 +33,7 @@ ClassAndModuleChildren:
 # 文字リテラルのイミュータブル宣言を無視
 Style/FrozenStringLiteralComment: 
   Enabled: false
+
+# "Line is too long"を無効
+Metrics/LineLength:
+  Enabled: false
