@@ -59,7 +59,7 @@ class TasksController < ApplicationController
 
   def send_tasks_csv(tasks)
     csv_data = CSV.generate do |csv|
-      header = %w(content, user_id, task_id, memo, action_at)
+      header = %w(content user_id task_id memo action_at)
       csv << header
 
       tasks.each do |task|
@@ -68,7 +68,6 @@ class TasksController < ApplicationController
           csv << values
         end
       end
-
     end
     send_data(csv_data, filename: "timefiles_tasks.csv")
   end
