@@ -15,9 +15,14 @@ class HistoriesController < ApplicationController
 
   def destroy
     @history = History.find(params[:id])
-    @history.destroy if @history.user_id == current_user.id
-    flash[:success] = '記録を削除しました'
-    redirect_to task_path(@history.task_id)
+    if @history.user_id == current_user.id
+      @history.destroy 
+      flash[:success] = '記録を削除しました'
+      redirect_to task_path(@history.task_id)
+    else
+      flash[:danger] = '記録を削除できませんでした'
+      redirect_to task_path(@history.task_id)
+    end
   end
 
   def calendar
