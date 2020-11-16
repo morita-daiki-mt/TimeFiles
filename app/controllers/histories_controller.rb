@@ -28,6 +28,6 @@ class HistoriesController < ApplicationController
   private
 
   def history_params
-    params.require(:history).permit(:id, :user_id, :task_id, :action_at)
+    params.require(:history).permit(:id, :task_id, :action_at)
   end
 end
