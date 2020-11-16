@@ -33,3 +33,4 @@
 /public/uploads/
 
 /.env
+/npm-debug.log
