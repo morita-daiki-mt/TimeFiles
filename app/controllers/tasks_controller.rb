@@ -53,7 +53,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     if @task.user_id == current_user.id
-      @task.destroy 
+      @task.destroy
       flash[:success] = 'タスクを削除しました'
       redirect_to tasks_path
     else

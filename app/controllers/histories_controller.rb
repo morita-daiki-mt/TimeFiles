@@ -16,7 +16,7 @@ class HistoriesController < ApplicationController
   def destroy
     @history = History.find(params[:id])
     if @history.user_id == current_user.id
-      @history.destroy 
+      @history.destroy
       flash[:success] = '記録を削除しました'
       redirect_to task_path(@history.task_id)
     else
