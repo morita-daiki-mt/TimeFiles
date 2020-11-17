@@ -41,7 +41,7 @@
       <div class="card-body">
         <p style="width: 50px;"><%= image_tag task.icon.thumb.url %></p>
         <div class="row index-namedate">
-          <h4 class="col-md-5"><%= link_to task.content, task, style: "color: #555555;" %></h4>
+          <h4 class="task-title col-md-5"><%= link_to task.content, task, style: "color: #555555;" %></h4>
           <div class="col-md-6">
             <% if @histories.present? %>
               <h5><%= (Date.today - @histories.action_at).to_i %> DAYS AGO</h5> 
@@ -56,7 +56,9 @@
             <%= f.hidden_field :action_at, :value => Date.today %>
             <%= f.submit 'TODAY', class: 'btn btn-outline-dark mb-1' %>
           <% end %>
-          <button type="button" class="btn btn-dark btn-sm"><%= link_to 'show', task %></button>
+          <button type="button" class="btn btn-dark" style="width:78.78px"><%= link_to 'show', task %></button>
+        </div>
+        <div class="my-auto ml-1">
           <%= link_to task, method: :delete, data: 
             { confirm: 'タスクを削除しますか?',
               cancel: 'やめる',
