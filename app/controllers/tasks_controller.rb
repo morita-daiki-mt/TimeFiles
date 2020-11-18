@@ -52,9 +52,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
-    @task.destroy if @task.user_id == current_user.id
-    flash[:success] = 'タスクを削除しました'
-    redirect_to tasks_path
+    if @task.user_id == current_user.id
+      @task.destroy
+      flash[:success] = 'タスクを削除しました'
+      redirect_to tasks_path
+    else
+      flash[:danger] = 'タスクを削除できませんでした'
+      redirect_to tasks_path
+    end
   end
 
   def send_tasks_csv(tasks)
@@ -75,7 +80,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:id, :user_id, :content, :icon, :memo, histories_attributes:
-                                [:id, :user_id, :task_id, :action_at])
+    params.require(:task).permit(:content, :icon, :memo, histories_attributes:
+                                [:task_id, :action_at])
   end
 end
