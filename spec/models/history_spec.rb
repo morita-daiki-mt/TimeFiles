@@ -13,14 +13,6 @@ RSpec.describe History, type: :model do
         expect(association.macro).to eq :belongs_to
       end
     end
-
-    context 'userとの関係' do
-      let(:target) { :user }
-
-      it 'N:1となっている' do
-        expect(association.macro).to eq :belongs_to
-      end
-    end
   end
 
   describe 'バリデーションのテスト' do

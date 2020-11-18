@@ -24,12 +24,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user.tasks.build(task_params)
-    @task.histories.each do |history|
-      history.user_id = current_user.id
-      history.task_id = @task.id
-      history.save
-    end
+    @task = current_user.tasks.create(task_params)
     if @task.save
       flash[:success] = 'タスクを追加しました'
       redirect_to tasks_path
@@ -80,7 +75,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:content, :icon, :memo, histories_attributes:
-                                [:task_id, :action_at])
+    params.require(:task).permit(:content, :icon, :memo, histories_attributes: [:id, :action_at])
   end
 end

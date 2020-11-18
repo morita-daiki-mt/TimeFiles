@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Tasks", type: :request do
   let(:user) { create(:user) }
   let(:task) { create(:task, user_id: user.id) }
-  let(:history) { create(:history, user_id: user.id, task_id: task.id) }
+  let(:history) { create(:history, task_id: task.id) }
 
   describe "GET tasks#index" do
     before do

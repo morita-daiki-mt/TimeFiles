@@ -2,7 +2,7 @@ class HistoriesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @history = current_user.histories.build(history_params)
+    @history = History.create(history_params)
     if @history.save
       flash[:success] = '実行日を追加しました'
       redirect_back(fallback_location: tasks_path)
@@ -15,7 +15,7 @@ class HistoriesController < ApplicationController
 
   def destroy
     @history = History.find(params[:id])
-    if @history.user_id == current_user.id
+    if @history.task.user_id == current_user.id
       @history.destroy
       flash[:success] = '記録を削除しました'
       redirect_to task_path(@history.task_id)
@@ -27,7 +27,7 @@ class HistoriesController < ApplicationController
 
   def calendar
     @tasks = current_user.tasks.all
-    @histories = current_user.histories.includes(:task)
+    @histories = History.all.includes(:task)
   end
 
   private
