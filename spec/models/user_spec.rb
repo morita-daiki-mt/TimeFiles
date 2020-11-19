@@ -13,14 +13,6 @@ RSpec.describe User, type: :model do
         expect(association.macro).to eq :has_many
       end
     end
-
-    context 'historyとの関係' do
-      let(:target) { :histories }
-
-      it '1:Nとなっている(taskが中間なので多対多)' do
-        expect(association.macro).to eq :has_many
-      end
-    end
   end
 
   describe 'バリデーションのテスト' do

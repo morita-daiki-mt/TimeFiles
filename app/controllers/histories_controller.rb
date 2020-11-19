@@ -8,7 +8,6 @@ class HistoriesController < ApplicationController
       redirect_back(fallback_location: tasks_path)
     else
       flash[:danger] = '実行日追加に失敗しました'
-      @history = current_user.histories.build(history_params)
       redirect_back(fallback_location: tasks_path)
     end
   end
@@ -26,8 +25,8 @@ class HistoriesController < ApplicationController
   end
 
   def calendar
-    @tasks = current_user.tasks.all
-    @histories = History.all.includes(:task)
+    user = current_user
+    @histories = user.tasks_histories
   end
 
   private
