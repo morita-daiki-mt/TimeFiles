@@ -39,6 +39,7 @@ gem 'devise-i18n'
 gem 'bootstrap', '~> 4.5.0'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem "bootstrap4-datetime-picker-rails"
+gem 'flatpickr'
 gem 'momentjs-rails'
 gem "font-awesome-rails"
 gem 'jquery-rails'
