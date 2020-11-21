@@ -42,12 +42,7 @@
     <%= form_with(model:[@task, @history], local: true) do |history| %>
       <%= history.hidden_field :task_id, :value => @task.id %>
       <div class="addhistories">
-        <div class="input-group date" data-target-input="nearest">
-            <%= history.text_field :action_at, id: "action_at", class: 'form-control datetimepicker-input', data: { target: '#action_at'}, required: true, placeholder: 'ADD DATE' %>
-            <span class = "input-group-append" data-target = "#action_at" data-toggle = "datetimepicker">
-              <span class = "input-group-text"><i class = "fa fa-calendar"></i></span>
-            </span>
-        </div>
+        <%= history.text_field :action_at, id: "flatpickr", class: 'form-control bg-white', type: "text", placeholder: 'ADD DATE', readonly:""%>
         <%= history.submit 'ADD', class: 'btn btn-outline-dark addhistorybtn' %>
       </div>
     <% end %>
