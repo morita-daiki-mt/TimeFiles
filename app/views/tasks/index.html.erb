@@ -1,13 +1,13 @@
 <div class="createtask">
   <button type="button" class="btn btn-outline-dark btn-block hidebtn" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    ADD NEW TASK
+    タスク追加
   </button>
   <div class="collapse" id="collapseExample">
     <div class="card" style="margin-top: -1rem;">
       <div class="card-body show-info" style="display: block;">
         <%= form_with(model: @task, local: true) do |f| %>
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label text-muted" for="">TASK NAME</label>
+            <label class="col-sm-2 col-form-label text-muted" for="">タスク追加</label>
             <div class="col-sm-9">
               <%= f.text_field :content, class:'form-control' %>
             </div>
@@ -15,14 +15,14 @@
 
           <div class="form-group row">
             <%= f.fields_for :histories do |history| %>
-              <label class="col-sm-2 col-form-label text-muted" for="">LAST DATE</label>
+              <label class="col-sm-2 col-form-label text-muted" for="">最終実行日</label>
               <div class="col-sm-9">
                 <%= history.text_field :action_at, id: "flatpickr", class: 'form-control bg-white', type: "text", readonly:""%>
               </div>
             <% end %>
           ​</div>
           <div class="text-right">
-            <%= f.submit 'CREATE', class: 'btn btn-outline-dark' %>
+            <%= f.submit 'タスク追加', class: 'btn btn-outline-dark' %>
           </div>
         <% end %>
       </div>
