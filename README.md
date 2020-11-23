@@ -49,7 +49,7 @@ http://54.168.27.112/<br>
 
 ##### その他使用技術
 - Action Mailer
-- bootstrap4-datetime-picker-rails
+- flatpickr(カレンダー機能)
 - carrierwave
 - data-confirm-modal
 - devise
