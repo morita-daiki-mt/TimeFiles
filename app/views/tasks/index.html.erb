@@ -9,7 +9,8 @@
           <div class="form-group row">
             <label class="col-sm-2 col-form-label text-muted" for="">タスク追加</label>
             <div class="col-sm-9">
-              <%= f.text_field :content, class:'form-control' %>
+              <%= f.text_field :content, class:'form-control', onKeyUp:"countLength(value, 'textlength');" %>
+              <P class="pull-right" id="textlength">0/20文字</P>
             </div>
           </div>
 
