@@ -8,12 +8,12 @@
               <p><%= image_tag @task.icon.url %></p>
               <div class="custom-file">
                 <%= f.file_field :icon, class: 'custom-file-input', id: 'customFile', accept: "image/png,image/jpeg,image/gif" %>
-                <label class="custom-file-label" for="customFile" data-browse="FILE">add icon ...</label>
+                <label class="custom-file-label" for="customFile" data-browse="FILE">アイコン追加</label>
               </div>
             </div>
             <div class="taskname-date col-lg-8 col-md-7">
-              <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', style: 'border: none; color: #555555;" ' %></h4>
-              <p class="task-rename">タスクの名前を変更できます</p>
+              <h4><i class="fa fa-edit fa-fw"></i><%= f.text_field :content, class: 'border-bottom', onKeyUp:"countLength(value, 'textlength');", style: 'border: none; color: #555555;" ' %></h4>
+              <p class="task-rename">タスクの名前を変更できます<span class="pull-right" id="textlength"> 0/20文字</span></p>
               <div class="elapsed-date">
                 <h4><i class="fa fa-calendar-minus-o fa-fw"></i>
                   <% if @histories.present? %>
@@ -28,9 +28,9 @@
         </div>
         <%= f.text_area :memo, class: 'form-control', placeholder: 'memo' %>
         <div class="showbtninfo">
-          <%= f.submit 'UPDATE', class: 'btn btn-outline-dark'%>
+          <%= f.submit 'タスク更新', class: 'btn btn-outline-dark'%>
           <button type="button" class="btn btn-outline-danger">
-            <%= link_to 'DELETE TASK', @task, class: 'text-danger', method: :delete, data: 
+            <%= link_to 'タスク削除', @task, class: 'text-danger', method: :delete, data: 
               { confirm: 'タスクを削除しますか?',
                 cancel: 'やめる',
                 commit: '削除する'}, title: '削除確認' %>
@@ -42,8 +42,8 @@
     <%= form_with(model:[@task, @history], local: true) do |history| %>
       <%= history.hidden_field :task_id, :value => @task.id %>
       <div class="addhistories">
-        <%= history.text_field :action_at, id: "flatpickr", class: 'form-control bg-white', type: "text", placeholder: 'ADD DATE', readonly:""%>
-        <%= history.submit 'ADD', class: 'btn btn-outline-dark addhistorybtn' %>
+        <%= history.text_field :action_at, id: "flatpickr", class: 'form-control bg-white', type: "text", placeholder: '実行日追加', readonly:""%>
+        <%= history.submit '追加', class: 'btn btn-outline-dark addhistorybtn' %>
       </div>
     <% end %>
     <%#======================================%>
@@ -62,7 +62,6 @@
     </ul>
 
     <div class="undermenu">
-      
       <button type="button" class="btn btn-dark btn-sm"><%= link_to 'PAGE BACK', tasks_path %></button>
     </div>
   </div>
