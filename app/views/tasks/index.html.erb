@@ -33,7 +33,7 @@
 <%#======================================%>
 <div class="task_index">
   <% @tasks.each do |task| %>
-    <% @histories = task.histories.order(action_at: :desc).first %>
+    <% @histories = task.histories.first %>
     <div class="card">
       <div class="card-body">
         <p style="width: 50px;"><%= image_tag task.icon.thumb.url %></p>
