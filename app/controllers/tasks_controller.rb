@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.includes(:histories)
     @task = Task.new
     @task.histories.build
     @history = History.new
