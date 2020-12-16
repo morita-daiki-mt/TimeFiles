@@ -1,3 +1,12 @@
+server "54.250.76.3", user: "morita", roles: %w{app db web}
+
+set :ssh_options, {
+  keys: %w(~/.ssh/timefiles.pem),
+  forward_agent: true,
+  auth_methods: %w(publickey),
+}
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -59,5 +68,3 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-
-server '54.168.27.112', user: 'morita', roles: %w(app web db)

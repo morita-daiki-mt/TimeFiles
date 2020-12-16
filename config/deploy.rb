@@ -1,41 +1,27 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "TimeFiles"
+set :application, "timefiles"
 set :repo_url, "git@example.com:morita-daiki-mt/TimeFiles.git"
+set :rbenv_ruby, File.read('.ruby-version').strip
 # シンボリックリンクをはるファイル
-append :linked_files, fetch(:linked_files, []).push("config/master.key")
+append :linked_files, "config/master.key"
 # バージョンが変わっても共通で参照するディレクトリを指定
-append :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/rails/TimeFiles"
-set :rbenv_type, :user
-set :rbenv_ruby, '2.6.6'
 
-#出力するログのレベル。
-set :log_level, :debug
+# #　デプロイ後Unicorn再起動
+# after 'deploy:publishing', 'deploy:restart'
+# namespace :deploy do
+#   task :restart do
+#     invoke 'unicorn:restart'
+#   end
+# end
 
-# どの公開鍵を利用してデプロイするか
-set :ssh_options, auth_methods: ['publickey'], keys: ['~/.ssh/TimeFiles.pem'] 
-
-# プロセス番号を記載したファイルの場所
-set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
-
-# Unicornの設定ファイルの場所
-set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
-set :keep_releases, 5
-
-#　デプロイ後Unicorn再起動
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
