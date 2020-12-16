@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "timefiles"
-set :repo_url, "git@example.com:morita-daiki-mt/TimeFiles.git"
+set :repo_url, "git@github.com:morita-daiki-mt/TimeFiles.git"
 set :rbenv_ruby, File.read('.ruby-version').strip
 # シンボリックリンクをはるファイル
 append :linked_files, "config/master.key"
