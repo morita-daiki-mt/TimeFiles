@@ -9,6 +9,9 @@ append :linked_files, "config/master.key"
 # バージョンが変わっても共通で参照するディレクトリを指定
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
 
+# Nginxの設定ファイル名と置き場所を修正
+set :nginx_config_name, "#{fetch(:application)}.conf"
+set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
