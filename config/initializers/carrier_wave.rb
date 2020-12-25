@@ -7,5 +7,6 @@ if Rails.env.production?
       region: "ap-northeast-1"
     }
     config.fog_directory = "timefiles"
+    config.asset_host = "https://static.timefiles-app.com"
   end
 end
