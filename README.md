@@ -1,9 +1,11 @@
+## TimeFiles
+![スクリーンショット 2020-12-28 153838](https://user-images.githubusercontent.com/62919960/103194397-dc611e00-4922-11eb-91e8-07dc8178f778.png)
 ## 概要
 「最後にしたのいつだっけ...」<br>
 最後にタスクを行った日から何日経ったか、あなたの代わりに正確に管理するサービスです。<br>
 
 ## URL
-http://54.168.27.112/<br>
+https://timefiles-app.com<br>
 ゲストログイン機能がございます。<br>
 ヘッダー、もしくはトップページのリンクから、ワンクリックでアプリの機能をお試しできます。<br>
 
@@ -13,6 +15,11 @@ http://54.168.27.112/<br>
 いつからしていないかが分かれば、放置していて気づいたときには手遅れ、使おうと思ったときに使えない状態になっている　等の防止にも役立つはずです。<br>
 既存のカレンダーアプリやタスク管理アプリではそういった使い方に不向きなものが多く、専用のWebアプリも見当たりませんでした。<br>
 趣味や私生活で、このようなアプリへの需要は私以外にも大きいと考え、このサービスを制作しました。<br>
+
+## Qiita
+このアプリの製作中、導入してみてとても便利だと感じたflatpickrというGemについての記事がQiitaにあまりなかったので、アウトプットも兼ねて使い方等を記事にしてみました。<br>
+Railsへの導入方法やカスタマイズ例などをまとめています。<br>
+[Railsでflatpickrを使ってみる](https://qiita.com/morimorita/items/abf7f4278303f539e58b)
 
 ## 機能一覧
 - カレンダー機能<br>
@@ -28,6 +35,7 @@ http://54.168.27.112/<br>
   タスク一覧ページから自分のタスクと履歴をエクスポートできます。
 
 ## インフラ構成図
+![AWS](https://user-images.githubusercontent.com/62919960/103165810-8ecfad00-485f-11eb-9ceb-5fa622e2b570.png)
 
 ## 環境・使用技術
 ##### フロントエンド
@@ -40,20 +48,22 @@ http://54.168.27.112/<br>
 
 ##### 開発環境
 - PostgreSQL
+- Puma
 
 ##### 本番環境
-- AWS (EC2, RDS for PostgreSQL, IAM )
+- AWS (VPC, EC2, RDS, IAM, Route53, ACM, ALB, S3, CloudFrot)
 - PostgreSQL
-- Ngix, Unicorn
+- Nginx
 
 
 ##### その他使用技術
 - Action Mailer
-- flatpickr(カレンダー機能)
+- capistrano
 - carrierwave
 - data-confirm-modal
 - devise
 - font-awesome-rails
+- flatpickr (カレンダー機能)
 - mini_magick
 - Rubocop-airbnb
 - simple_calendar
