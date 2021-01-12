@@ -63,24 +63,24 @@ RSpec.describe 'Histories', type: :system do
     end
     it 'タスク名を変更できる' do
       fill_in 'task_content', with: 'TimeFilesテスト'
-      click_button 'UPDATE'
+      click_button 'タスク更新'
       visit tasks_path
       expect(page).to have_content'TimeFilesテスト'
     end
     it 'メモを追加できる' do
       fill_in 'task_memo', with: 'タスクメモ'
-      click_button 'UPDATE'
+      click_button 'タスク更新'
       expect(page).to have_content'タスクメモ'
     end
     it 'タスク削除ボタンでTaskが消える' do
       expect do
-        click_button 'DELETE TASK'
+        click_button 'タスク削除'
         click_button '削除する'
       end.to change(Task, :count).by(-1)
     end
     it 'タスク削除ボタンでTaskと一緒にHistoryも消える' do
       expect do
-        click_button 'DELETE TASK'
+        click_button 'タスク削除'
         click_button '削除する'
       end.to change(History, :count).by(-1)
     end
