@@ -15,7 +15,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'Eメール', with: 'test@example.com'
         fill_in 'パスワード', with: '123456'
         click_button 'ログイン'
-        expect(page).to have_button 'ADD NEW TASK'
+        expect(page).to have_button '新規タスク'
       end
     end
 
