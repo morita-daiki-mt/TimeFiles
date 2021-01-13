@@ -4,33 +4,42 @@ RSpec.describe 'Histories', type: :system do
   let(:history) { create(:history) }
   let(:task) { history.task }
   let(:user) { task.user}
+  let(:yesterday) { Date.today - 1 }
 
   describe 'indexページ' do
     context 'タスク追加関連' do
       before do
         login_user user
         visit tasks_path
-        click_button 'ADD NEW TASK'
+        click_button '新規タスク'
       end
-      # it 'タスク追加に成功する' do
-      #   fill_in 'task_content', with: 'test'
-      #   fill_in 'flatpickr', with: Faker::Date.backward
-      #   click_button 'CREATE'
-      #   expect(page).to have_content 'test'
-      # end
-      # it 'タスク追加に失敗する' do
-      #   expect do
-      #     fill_in 'task_content', with: 'test'
-      #     fill_in 'flatpickr', with: ''
-      #     click_button 'CREATE'
-      #   end.to change(History, :count).by 0
-      # end
-      # it '最終実行日が機能している' do
-      #   fill_in 'task_content', with: 'test'
-      #   fill_in 'flatpickr', with: Date.today - 1
-      #   click_button 'CREATE'
-      #   expect(page).to have_content '1 DAYS AGO'
-      # end
+      it 'タスク追加に成功する' do
+        fill_in 'task_content', with: 'test'
+        find("#flatpickr").click
+        find(".today").click
+        click_button '新規作成'
+        expect(page).to have_content 'test'
+      end
+      it '日付選択なしの場合タスク追加に失敗する' do
+        expect do
+          fill_in 'task_content', with: 'test'
+          click_button '新規作成'
+        end.to change(History, :count).by 0
+      end
+      it '日付選択なしの場合タスク追加に失敗する' do
+        expect do
+          find("#flatpickr").click
+          find(".today").click
+          click_button '新規作成'
+        end.to change(History, :count).by 0
+      end
+      it '最終実行日が機能している' do
+        fill_in 'task_content', with: 'test'
+        find("#flatpickr").click
+        find(".today").click
+        click_button '新規作成'
+        expect(page).to have_content '0 DAYS AGO'
+      end
     end
     context 'タスクごとの機能' do
       before do
@@ -84,11 +93,12 @@ RSpec.describe 'Histories', type: :system do
         click_button '削除する'
       end.to change(History, :count).by(-1)
     end
-    # it '実行日を追加できる' do
-    #   fill_in 'ADD DATE', with: '2020-10-07'
-    #   click_button 'ADD'
-    #   expect(page).to have_content '2020年 10月 07日'
-    # end
+    it '実行日を追加できる' do
+      find("#flatpickr").click
+      find(".today").click
+      click_button '追加'
+      expect(page).to have_content Date.today.strftime("%Y年 %m月 %d日")
+    end
     it '実行日を削除する' do
       expect do
         find('.historydeletebtn').click
@@ -98,19 +108,20 @@ RSpec.describe 'Histories', type: :system do
     end
   end
 
-  # describe 'カレンダーページ' do
-  #   before do
-  #     login_user user
-  #     visit tasks_path
-  #     click_button 'ADD NEW TASK'
-  #     fill_in 'task_content', with: 'Calendar_test'
-  #     fill_in 'flatpickr', with: Date.today
-  #     click_button 'CREATE'
-  #     visit calendar_path
-  #   end
+  describe 'カレンダーページ' do
+    before do
+      login_user user
+      visit tasks_path
+      click_button '新規タスク'
+      fill_in 'task_content', with: 'Calendar_test'
+      find("#flatpickr").click
+      find(".today").click
+      click_button '新規作成'
+      visit calendar_path
+    end
 
-  #   it 'カレンダーが機能している' do
-  #     expect(page).to have_content 'Calendar_test'
-  #   end
-  # end
+    it 'カレンダーが機能している' do
+      expect(page).to have_content 'Calendar_test'
+    end
+  end
 end

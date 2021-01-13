@@ -18,7 +18,7 @@
             <%= f.fields_for :histories do |history| %>
               <label class="col-sm-2 col-form-label text-muted" for="">最終実行日</label>
               <div class="col-sm-9">
-                <%= history.text_field :action_at, id: "flatpickr", class: 'form-control bg-white', type: "text", readonly:""%>
+                <%= history.text_field :action_at, id: "flatpickr", class: 'form-control bg-white', type: "text" %>
               </div>
             <% end %>
           ​</div>
